@@ -636,3 +636,41 @@ section{scroll-margin-top:5rem;}
     white-space:normal !important;
   }
 }
+
+/* Tee accordion-otsikosta saman näköinen kuin kortin H3 */
+.acc-card summary{
+  font-size:1.1rem;          /* sama kuin .card h3 */
+  margin:0;                  /* ei ylimääräisiä välejä */
+  color:#f9fafb;
+  font-weight:700;
+  line-height:1.25;
+}
+
+/* poista selaimen default-tyyli */
+.acc-card summary::-webkit-details-marker{ display:none; }
+
+/* Nuoli oikealle, ei sotke otsikkoa */
+.acc-card summary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:0.75rem;
+}
+
+/* Nuolen tyyli (sama fiilis kuin sivun accent) */
+.acc-card summary::after{
+  content:"▾";
+  color:#38bdf8;
+  font-size:1.1rem;
+  transition:transform .2s ease;
+}
+
+/* Auki = nuoli ylös */
+.acc-card[open] summary::after{
+  transform:rotate(180deg);
+}
+
+/* summary ei saa näyttää nappimaiselta, vaan otsikolta */
+.acc-card summary{ padding:0; }
+.acc-card .acc-body{ margin-top:0.8rem; }
+
