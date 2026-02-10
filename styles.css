@@ -78,7 +78,7 @@ section{scroll-margin-top:5rem;}
   text-transform:uppercase;
 }
 .logo img{
-  height:30px;
+  height:56px;
   width:auto;
   display:block;
 }
@@ -110,7 +110,7 @@ section{scroll-margin-top:5rem;}
   opacity:0.9;
 }
 .nav-container.shrink .logo img{
-  height:24px;
+  height:40px !important; /* esim 40, valitse 36–44 */
 }
 
 /* Hamburger-nappi mobiilissa */
@@ -600,3 +600,15 @@ section{scroll-margin-top:5rem;}
   }
 }
 
+/* FORCE: logo headerissa isoksi */
+.site-header .logo{
+  display:flex;
+  align-items:center;
+  gap:0.6rem;
+}
+
+.site-header .logo img{
+  height:56px !important;
+  width:auto !important;
+  max-width:none !important;   /* tärkeä */
+}
