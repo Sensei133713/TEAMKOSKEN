@@ -133,3 +133,14 @@ if (openLeadership && leadershipModal) {
     if (e.key === "Escape" && leadershipModal.classList.contains("is-open")) closeModal();
   });
 }
+
+document.querySelectorAll('.mobile-accordion-list[data-accordion="single"]').forEach(list => {
+  list.addEventListener('toggle', (e) => {
+    if (!(e.target instanceof HTMLDetailsElement)) return;
+    if (!e.target.open) return;
+
+    list.querySelectorAll('details.acc-item').forEach(d => {
+      if (d !== e.target) d.open = false;
+    });
+  }, true);
+});
