@@ -1,27 +1,48 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Mobiilinavigaation toggle
-  var navToggle = document.querySelector(".nav-toggle");
-  var mainNav = document.querySelector(".main-nav");
-  var primaryMenu = document.getElementById("primary-menu");
+ // Mobiilinavigaation toggle (premium dropdown + overlay)
+var navToggle = document.querySelector(".nav-toggle");
+var mainNav = document.querySelector(".main-nav");
+var primaryMenu = document.getElementById("primary-menu");
+var navOverlay = document.querySelector("[data-nav-overlay]");
 
-  if (navToggle && mainNav) {
-    navToggle.addEventListener("click", function () {
-      var isOpen = mainNav.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+function openNav() {
+  if (!mainNav || !navToggle) return;
+  mainNav.classList.add("open");
+  if (navOverlay) navOverlay.classList.add("is-open");
+  navToggle.setAttribute("aria-expanded", "true");
+}
+
+function closeNav() {
+  if (!mainNav || !navToggle) return;
+  mainNav.classList.remove("open");
+  if (navOverlay) navOverlay.classList.remove("is-open");
+  navToggle.setAttribute("aria-expanded", "false");
+}
+
+if (navToggle && mainNav) {
+  navToggle.addEventListener("click", function () {
+    var isOpen = mainNav.classList.contains("open");
+    isOpen ? closeNav() : openNav();
+  });
+
+  // Sulje kun linkkiä klikataan
+  if (primaryMenu) {
+    primaryMenu.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", closeNav);
     });
-
-    if (primaryMenu) {
-      primaryMenu.addEventListener("click", function (e) {
-        if (
-          e.target.tagName.toLowerCase() === "a" &&
-          mainNav.classList.contains("open")
-        ) {
-          mainNav.classList.remove("open");
-          navToggle.setAttribute("aria-expanded", "false");
-        }
-      });
-    }
   }
+
+  // Sulje kun klikataan taustaa
+  if (navOverlay) {
+    navOverlay.addEventListener("click", closeNav);
+  }
+
+  // Sulje ESC:llä
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && mainNav.classList.contains("open")) closeNav();
+  });
+}
+
 
   // Smooth scrolling
   var links = document.querySelectorAll('a[href^="#"]');
@@ -144,3 +165,4 @@ document.querySelectorAll('.mobile-accordion-list[data-accordion="single"]').for
     });
   }, true);
 });
+

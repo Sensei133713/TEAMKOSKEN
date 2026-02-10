@@ -746,3 +746,255 @@ section{scroll-margin-top:5rem;}
     padding-top:1rem;
   }
 }
+
+/* PREMIUM mobiilivalikko */
+@media (max-width:768px){
+
+  /* Headerin sisällä pitää olla ankkuri */
+  .nav-container{ position:sticky; }
+
+  .main-nav{
+    position:absolute;
+    top:calc(100% + 10px);
+    right:12px;
+    left:auto;
+
+    width:min(320px, calc(100vw - 24px));
+    padding:10px;
+
+    border-radius:16px;
+    background:linear-gradient(180deg, rgba(15,23,42,0.92), rgba(2,6,23,0.92));
+    border:1px solid rgba(148,163,184,0.28);
+    box-shadow:0 24px 70px rgba(0,0,0,0.65);
+    backdrop-filter:blur(16px);
+
+    transform:translateY(-8px);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease;
+  }
+
+  .main-nav.open{
+    transform:translateY(0);
+    opacity:1;
+    pointer-events:auto;
+  }
+
+  .nav-menu{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    padding:6px;
+  }
+
+  /* Linkit premium “pill” */
+  .nav-menu a{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:12px 12px;
+    border-radius:12px;
+
+    background:rgba(15,23,42,0.55);
+    border:1px solid rgba(148,163,184,0.22);
+
+    color:#e5e7eb;
+    font-weight:600;
+    opacity:1;
+
+    transition:transform .12s ease, border-color .12s ease, background .12s ease;
+  }
+
+  .nav-menu a:hover,
+  .nav-menu a:focus-visible{
+    background:rgba(37,99,235,0.18);
+    border-color:rgba(56,189,248,0.45);
+    transform:translateY(-1px);
+  }
+
+  /* Poista vanha full-width “laatta” fiilis */
+  .main-nav{
+    border-top:none;
+  }
+}
+/* PREMIUM mobiilivalikko + overlay */
+.nav-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .18s ease;
+  z-index:40;
+}
+
+@media (max-width:768px){
+
+  /* Headerin sisällä ankkuri */
+  .nav-container{ position:sticky; z-index:50; }
+
+  /* Dropdown-kortti (ei enää full-width laatta) */
+  .main-nav{
+    position:absolute;
+    top:calc(100% + 10px);
+    right:12px;
+    left:auto;
+
+    width:min(340px, calc(100vw - 24px));
+    padding:10px;
+
+    border-radius:18px;
+    background:linear-gradient(180deg, rgba(15,23,42,0.92), rgba(2,6,23,0.92));
+    border:1px solid rgba(148,163,184,0.28);
+    box-shadow:0 24px 70px rgba(0,0,0,0.65);
+    backdrop-filter:blur(16px);
+
+    transform:translateY(-10px) scale(0.98);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease;
+    z-index:60;
+
+    /* poista vanha */
+    border-top:none;
+  }
+
+  .main-nav.open{
+    transform:translateY(0) scale(1);
+    opacity:1;
+    pointer-events:auto;
+  }
+
+  /* Overlay näkyviin kun nav auki */
+  .main-nav.open ~ .nav-overlay,
+  .nav-overlay.is-open{
+    opacity:1;
+    pointer-events:auto;
+  }
+
+  .nav-menu{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    padding:6px;
+  }
+
+  /* Premium “pill” linkit */
+  .nav-menu a{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:12px 12px;
+    border-radius:14px;
+
+    background:rgba(15,23,42,0.55);
+    border:1px solid rgba(148,163,184,0.22);
+
+    color:#e5e7eb;
+    font-weight:650;
+    opacity:1;
+
+    transition:transform .12s ease, border-color .12s ease, background .12s ease;
+  }
+
+  .nav-menu a:hover,
+  .nav-menu a:focus-visible{
+    background:rgba(37,99,235,0.18);
+    border-color:rgba(56,189,248,0.45);
+    transform:translateY(-1px);
+  }
+
+  /* Hamburger “nappi” vähän premiumimmaksi (valinnainen) */
+  .nav-toggle{
+    padding:10px;
+    border-radius:12px;
+    border:1px solid rgba(148,163,184,0.25);
+    background:rgba(15,23,42,0.35);
+    backdrop-filter:blur(12px);
+  }
+}
+/* ===== Premium mobile menu + overlay ===== */
+.nav-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(2,6,23,0.55);
+  backdrop-filter: blur(6px);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .2s ease;
+  z-index:45; /* alle nav-container (50) mutta yli sivun */
+}
+.nav-overlay.is-open{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* Mobiilin menu paneelina, ei "lista sivulla" */
+@media(max-width:768px){
+  /* varmista että headerissa on tilaa isommalle logolle */
+  .nav-container{
+    position:sticky;
+  }
+
+  .main-nav{
+    position:fixed;              /* tärkeä: irti layoutista */
+    top:72px;                    /* säädä jos headerin korkeus eri */
+    left:12px;
+    right:12px;
+    z-index:60;
+    border-radius:16px;
+    padding:10px 0;
+    background:linear-gradient(180deg,rgba(15,23,42,0.98),rgba(2,6,23,0.98));
+    border:1px solid rgba(148,163,184,0.25);
+    box-shadow:0 24px 70px rgba(0,0,0,0.55);
+    transform:translateY(-10px) scale(0.98);
+    opacity:0;
+    pointer-events:none;
+    transition:transform .2s ease, opacity .2s ease;
+  }
+
+  .main-nav.open{
+    transform:translateY(0) scale(1);
+    opacity:1;
+    pointer-events:auto;
+  }
+
+  .nav-menu{
+    flex-direction:column;
+    gap:0;
+    padding:0;
+  }
+
+  .nav-menu li + li{
+    border-top:1px solid rgba(148,163,184,0.12);
+  }
+
+  .nav-menu a{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 16px;
+    border-bottom:0;
+    opacity:1;
+    font-weight:600;
+    color:#e5e7eb;
+  }
+
+  /* pieni "chevron" premium-fiilikseen */
+  .nav-menu a::after{
+    content:"›";
+    opacity:0.6;
+    transform:translateY(-1px);
+  }
+
+  .nav-menu a:hover{
+    background:rgba(56,189,248,0.08);
+  }
+
+  /* hamburgerin paikka/tyyli pysyy */
+  .nav-toggle{
+    display:flex;
+  }
+}
