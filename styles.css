@@ -612,3 +612,27 @@ section{scroll-margin-top:5rem;}
   width:auto !important;
   max-width:none !important;   /* tärkeä */
 }
+
+/* FIX: mobiili-accordionin sisältö ei saa katketa */
+@media (max-width:768px){
+  .services-accordion details,
+  .industries-accordion details{
+    height:auto !important;
+    max-height:none !important;
+    overflow:visible !important;
+  }
+
+  .services-accordion .acc-body,
+  .industries-accordion .acc-body{
+    height:auto !important;
+    max-height:none !important;
+    overflow:visible !important;
+    word-break:normal;
+    overflow-wrap:anywhere;
+  }
+
+  /* jos summary oli vahingossa line-clampattu tms */
+  .acc-card summary{
+    white-space:normal !important;
+  }
+}
