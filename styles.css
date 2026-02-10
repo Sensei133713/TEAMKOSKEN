@@ -545,59 +545,58 @@ section{scroll-margin-top:5rem;}
   .modal-panel{margin:0.75rem auto;}
 }
 
-/* Näytä accordion vain mobiilissa */
-.mobile-accordion-list{ display:none; }
+/* Accordion-versiot piilossa desktopilla */
+.services-accordion,
+.industries-accordion { display: none; }
 
-@media (max-width:768px){
-  /* Piilota nykyiset korttigridit mobiilissa */
-  .services-grid,
-  .industries-grid{ display:none; }
-
-  .mobile-accordion-list{
-    display:grid;
-    gap:0.9rem;
-  }
-
-  .acc-item{
-    border-radius:1.1rem;
-    border:1px solid rgba(148,163,184,0.35);
-    background:radial-gradient(circle at top left,#111827,#020617);
-    box-shadow:0 14px 36px rgba(15,23,42,0.55);
-    overflow:hidden;
-  }
-
-  .acc-item summary{
-    list-style:none;
-    cursor:pointer;
-    padding:1rem 1.1rem;
-    font-weight:700;
-    color:#f9fafb;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:0.75rem;
-  }
-
-  /* poista oletus nuoli */
-  .acc-item summary::-webkit-details-marker{ display:none; }
-
-  /* oma nuoli */
-  .acc-item summary::after{
-    content:"▾";
-    color:#38bdf8;
-    transition:transform .2s ease;
-    font-size:1.1rem;
-  }
-
-  .acc-item[open] summary::after{
-    transform:rotate(180deg);
-  }
-
-  .acc-body{
-    padding:0 1.1rem 1.05rem;
-    color:#d1d5db;
-    font-size:0.95rem;
-  }
-
-  .acc-body p{ margin-top:0.65rem; }
+/* Summary näyttää kortin otsikolta */
+.acc-card summary{
+  list-style:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:0.75rem;
 }
+
+/* poista selaimen oma nuoli */
+.acc-card summary::-webkit-details-marker{ display:none; }
+
+/* nuoli (ilman FontAwesome-riippuvuutta) */
+.acc-card summary::after{
+  content:"▾";
+  color:#38bdf8;
+  transition:transform .2s ease;
+  font-size:1.1rem;
+}
+
+.acc-card[open] summary::after{
+  transform:rotate(180deg);
+}
+
+/* Aukeava sisältö kortin sisällä */
+.acc-card .acc-body{
+  margin-top:0.9rem;
+  padding-top:0.9rem;
+  border-top:1px solid rgba(148,163,184,0.25);
+}
+
+/* Mobiilissa: piilota vanhat kortit ja näytä uudet */
+@media (max-width:768px){
+  .services-grid{ display:none !important; }
+  .industries-grid{ display:none !important; }
+
+  .services-accordion,
+  .industries-accordion{
+    display:grid !important;
+    grid-template-columns:1fr;
+    gap:1.1rem;
+  }
+
+  /* Mobiilissa ei tarvita niin isoa paddingia kortteihin */
+  .services-accordion .card,
+  .industries-accordion .card{
+    padding:1.2rem;
+  }
+}
+
