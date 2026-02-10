@@ -674,3 +674,74 @@ section{scroll-margin-top:5rem;}
 .acc-card summary{ padding:0; }
 .acc-card .acc-body{ margin-top:0.8rem; }
 
+/* ACCORDION: premium ulkoasu (mobiili) */
+@media (max-width:768px){
+
+  /* Poista kortin padding itse detailsiltä -> padding summaryyn ja bodyyn */
+  .services-accordion .acc-card,
+  .industries-accordion .acc-card{
+    padding:0 !important;
+  }
+
+  /* Poista selaimen oma "marker"/play-ikoni kaikissa selaimissa */
+  .services-accordion .acc-card summary,
+  .industries-accordion .acc-card summary{
+    list-style:none !important;
+  }
+  .services-accordion .acc-card summary::-webkit-details-marker,
+  .industries-accordion .acc-card summary::-webkit-details-marker{
+    display:none;
+  }
+  .services-accordion .acc-card summary::marker,
+  .industries-accordion .acc-card summary::marker{
+    content:"";
+  }
+
+  /* Summary näyttää kortin otsikolta */
+  .services-accordion .acc-card summary,
+  .industries-accordion .acc-card summary{
+    padding:1.2rem 1.2rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:0.9rem;
+    cursor:pointer;
+
+    font-size:1.1rem;
+    font-weight:700;
+    color:#f9fafb;
+    line-height:1.25;
+  }
+
+  /* Oma nuoli oikealle */
+  .services-accordion .acc-card summary::after,
+  .industries-accordion .acc-card summary::after{
+    content:"▾";
+    color:#38bdf8;
+    font-size:1.1rem;
+    transition:transform .2s ease;
+    flex:0 0 auto;
+  }
+
+  .services-accordion .acc-card[open] summary::after,
+  .industries-accordion .acc-card[open] summary::after{
+    transform:rotate(180deg);
+  }
+
+  /* Avautuva sisältö: sama kortti, siisti erotin */
+  .services-accordion .acc-card .acc-body,
+  .industries-accordion .acc-card .acc-body{
+    padding:0 1.2rem 1.2rem;
+  }
+
+  .services-accordion .acc-card .acc-body{
+    border-top:1px solid rgba(148,163,184,0.25);
+    margin-top:0;
+    padding-top:1rem;
+  }
+  .industries-accordion .acc-card .acc-body{
+    border-top:1px solid rgba(148,163,184,0.25);
+    margin-top:0;
+    padding-top:1rem;
+  }
+}
