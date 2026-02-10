@@ -66,9 +66,9 @@ section{scroll-margin-top:5rem;}
   justify-content:space-between;
   padding:0.85rem 1.5rem;
   backdrop-filter:blur(14px);
-  background:linear-gradient(90deg,rgba(15,23,42,0.94),rgba(15,23,42,0.88));
-  border-bottom:1px solid rgba(148,163,184,0.3);
-  box-shadow:0 14px 40px rgba(15,23,42,0.85);
+  background:linear-gradient(90deg, rgba(7,12,24,0.92), rgba(15,23,42,0.86));
+  border-bottom:1px solid rgba(96,165,250,0.22);
+  box-shadow:0 16px 55px rgba(0,0,0,0.55);
   transition:padding .25s ease,background .25s ease,box-shadow .25s ease,transform .25s ease;
 }
 .logo{
@@ -86,6 +86,7 @@ section{scroll-margin-top:5rem;}
   display:flex;
   gap:1.5rem;
   font-size:0.95rem;
+  filter:drop-shadow(0 10px 18px rgba(0,0,0,0.45));
 }
 .nav-menu a{
   padding:0.3rem 0;
