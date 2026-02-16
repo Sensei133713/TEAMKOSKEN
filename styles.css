@@ -1566,3 +1566,21 @@ select:focus-visible{
     border-color:rgba(56,189,248,0.2);
   }
 }
+
+.hero-text h1{
+  font-size:2.5rem;
+  line-height:1.2;
+  margin-bottom:1rem;
+  font-weight:700;
+  color:#ffffff;                        /* Puhdas valkoinen */
+  text-shadow:0 2px 20px rgba(0,0,0,0.3);
+}
+
+.hero-text p{
+  margin-bottom:0.7rem;
+  color:#e2e8f0;                        /* Vaaleampi harmaa */
+  line-height:1.8;                      /* Lisää riviväliä */
+  font-size:1.05rem;
+  max-width:34rem;
+  text-shadow:0 1px 8px rgba(0,0,0,0.4);
+}
