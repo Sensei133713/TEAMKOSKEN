@@ -3,16 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <title>Team Kosken – Teollisuuden projektinjohto ja kunnossapito</title>
-  <meta name="description" content="Team Kosken tarjoaa teollisuuden projektinjohtoa, työmaavalvontaa, kunnossapitopalveluja ja putkisto-urakointia energia-, paperi-, sellu- ja terästeollisuudelle.">
-  <meta name="keywords" content="Team Kosken, teollisuuden palvelut, projektinjohto, työmaavalvonta, kunnossapito, putkisto-urakointi, teollisuus, henkilöstövuokraus">
+  <meta name="description" content="Team Kosken tarjoaa teollisuuden projektinjohtoa, työmaavalvontaa, kunnossapitopalveluja ja putkistoasennuksia energia-, kemian-, paperi-, sellu- ja terästeollisuudelle.">
+  <meta name="keywords" content="Team Kosken, teollisuuden palvelut, projektinjohto, työmaavalvonta, kunnossapito, putkistoasennukset, teollisuus, henkilöstövuokraus">
   <meta name="robots" content="index, follow">
+  <meta name="author" content="Team Kosken">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#020617">
+  
+  <!-- Canonical URL -->
   <link rel="canonical" href="https://www.teamkosken.fi/">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.teamkosken.fi/">
+  <meta property="og:title" content="Team Kosken – Teollisuuden projektinjohto ja kunnossapito">
+  <meta property="og:description" content="Luotettava kumppani energia-, kemian-, paperi-, sellu- ja terästeollisuuden projektinjohtoon, kunnossapitoon ja putkistoasennuksiin.">
+  <meta property="og:image" content="images/og-image.jpg">
+  <meta property="og:locale" content="fi_FI">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.teamkosken.fi/">
+  <meta property="twitter:title" content="Team Kosken – Teollisuuden projektinjohto ja kunnossapito">
+  <meta property="twitter:description" content="Luotettava kumppani energia-, kemian-, paperi-, sellu- ja terästeollisuuden projektinjohtoon, kunnossapitoon ja putkistoasennuksiin.">
+  <meta property="twitter:image" content="images/og-image.jpg">
 
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-  <!-- Päätyylit -->
+  <!-- Preload critical resources -->
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="images/LOGO1.svg" as="image" type="image/svg+xml">
+  
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
 
   <!-- Strukturoitu data (JSON-LD) hakukoneita varten -->
@@ -22,81 +49,32 @@
     "@type": "Organization",
     "name": "Team Kosken",
     "url": "https://www.teamkosken.fi/",
-    "description": "Teollisuuden palveluyritys, joka tarjoaa projektinjohtoa, työmaavalvontaa, kunnossapitopalveluja, henkilöstövuokrausta ja putkisto-urakointia energia-, paperi-, sellu- ja terästeollisuudelle.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "FI"
-    },
-    "areaServed": [
-      "Energia-ala",
-      "Paperiteollisuus",
-      "Selluteollisuus",
-      "Terästeollisuus"
-    ],
-    "contactPoint": [{
-      "@type": "ContactPoint",
-      "contactType": "Asiakaspalvelu",
-      "email": "info@teamkosken.fi"
-    }],
+    "logo": "https://www.teamkosken.fi/images/LOGO1.svg",
+    "description": "Teollisuuden palveluyritys, joka tarjoaa projektinjohtoa, työmaavalvontaa, kunnossapitopalveluja, henkilöstövuokrausta ja putkistoasennuksia energia-, kemian-, paperi-, sellu- ja terästeollisuudelle.",
+    "address": {"@type": "PostalAddress", "addressCountry": "FI"},
+    "areaServed": ["Energia-ala", "Kemianteollisuus", "Paperiteollisuus", "Selluteollisuus", "Terästeollisuus"],
+    "contactPoint": [{"@type": "ContactPoint", "contactType": "Asiakaspalvelu", "email": "info@teamkosken.fi", "telephone": "+358401234567"}],
     "makesOffer": {
       "@type": "OfferCatalog",
       "name": "Teollisuuden palvelut",
       "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Projektinjohto",
-            "description": "Teollisuuden hankkeiden projektinjohto alusta loppuun."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Työmaavalvonta",
-            "description": "Työmaiden etenemisen turvallinen ja laadukas valvonta."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Toimitusvalvonta",
-            "description": "Hankintojen ja toimitusten aikataulujen valvonta."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Kunnossapitopalvelut",
-            "description": "Kokonaisvaltaiset kunnossapitoratkaisut tuotannon jatkuvuuden varmistamiseksi."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Henkilöstövuokraus",
-            "description": "Kokeneiden teollisuusammattilaisten vuokraus lyhyt- ja pitkäaikaisiin tarpeisiin."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Teollisuuden putkisto-urakointi",
-            "description": "Putkistoasennukset ja putkisto-urakointi vaativiin teollisuuskohteisiin."
-          }
-        }
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Projektinjohto", "description": "Teollisuuden hankkeiden ja huoltoseisokkien projektinjohto."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Työmaavalvonta", "description": "Työmaiden etenemisen turvallinen ja laadukas valvonta."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Toimitusvalvonta", "description": "Hankintojen ja toimitusten aikataulujen valvonta."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Kunnossapitopalvelut", "description": "Kokonaisvaltaiset kunnossapitoratkaisut tuotannon jatkuvuuden varmistamiseksi."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Henkilöstövuokraus", "description": "Kokeneiden teollisuusammattilaisten vuokraus lyhyt- ja pitkäaikaisiin tarpeisiin."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Teollisuuden putkistoasennukset", "description": "Putkistoasennukset ja hitsaukset vaativiin teollisuuskohteisiin."}}
       ]
     }
   }
   </script>
+<base target="_blank">
 </head>
 <body id="top">
-  <!-- Sticky header: vain logo + navigaatio -->
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="skip-link">Siirry pääsisältöön</a>
+  
+  <!-- Sticky header -->
   <header class="site-header">
     <div class="container nav-container">
       <a href="#top" class="logo" aria-label="Team Kosken etusivu">
@@ -116,72 +94,72 @@
           <li><a href="#palvelut">Palvelut</a></li>
           <li><a href="#toimialat">Toimialat</a></li>
           <li><a href="#meista">Meistä</a></li>
-          <li><a href="#yhteys">Yhteys</a></li>
+          <li><a href="#ajankohtaista">Ajankohtaista</a></li>
+          <li><a href="#yhteys">Ota yhteyttä</a></li>
         </ul>
       </nav>
     </div>
   </header>
   <div class="nav-overlay" data-nav-overlay></div>
 
-
-  <!-- HERO NYT HEADERIN ULKOPUOLELLA → RULLAA NORMISTI POIS -->
+  <!-- HERO -->
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-text">
-        <h1>Teollisuuden projektinjohto ja kunnossapito – Team Kosken</h1>
+        <h1>Teollisuuden projektit ja kunnossapito – Team Kosken</h1>
         <p class="hero-lead">
-          Team Kosken on luotettava kumppani energia-, paperi-, sellu- ja terästeollisuuden tarpeisiin.
-          Toteutamme projektinjohdon, kunnossapidon ja putkisto-urakoinnin kustannustehokkaasti, turvallisesti
+          Team Kosken on luotettava kumppani energia-, kemian-, paperi-, sellu- ja terästeollisuuden tarpeisiin. 
+          Toteutamme projektit ja kunnossapidon ja putkisto-urakoinnin kustannustehokkaasti, turvallisesti 
           ja aikataulussa – tuotannon jatkuvuutta kunnioittaen.
         </p>
         <p>
-          Panostamme pitkäaikaisiin kumppanuuksiin, joissa yhdistyvät vahva käytännön kokemus, selkeä projektinjohto
-          sekä joustava resursointi. Tavoitteenamme on varmistaa, että asiakkaan tuotanto pyörii mahdollisimman
+          Panostamme pitkäaikaisiin kumppanuuksiin, joissa yhdistyvät vahva käytännön kokemus, selkeä projektinjohto 
+          sekä joustava resursointi. Tavoitteenamme on varmistaa, että asiakkaan tuotanto pyörii mahdollisimman 
           häiriöttömästi – niin suunnitelluissa seisokeissa kuin arjen kunnossapidossa.
         </p>
         <div class="hero-actions">
           <a href="#palvelut" class="btn btn-primary">Tutustu palveluihin</a>
-          <a href="#yhteys" class="btn btn-outline">Ota yhteyttä</a>
-          <button class="btn btn-outline" type="button" id="open-leadership">Johto</button>
+          <button class="btn btn-outline" type="button" id="open-leadership">Ota yhteyttä</button>
+          <button class="btn btn-outline" type="button" id="open-tarjous">Tarjouspyynnöt</button>
         </div>
-
       </div>
       <div class="hero-image-wrapper">
         <img src="images/halli.png" alt="Teollisuuslaitos ja tuotantoympäristö" class="hero-image">
       </div>
     </div>
   </section>
+  <div class="highlight-text">Luotettavuus · Turvallisuus · Laatu</div>
 
-  <main>
+  <main id="main-content">
     <!-- Palvelut -->
     <section id="palvelut" class="section section-light">
       <div class="container">
-        <header class="section-header">
+        <header class="section-header scroll-reveal">
           <h2>Palvelumme teollisuuden tarpeisiin</h2>
           <p>
-            Team Kosken tarjoaa kattavan valikoiman teollisuuden palveluja, jotka on suunniteltu tukemaan sekä yksittäisiä projekteja
-            että laajaa tuotantoympäristöä. Jokainen palvelu on rakennettu tukemaan turvallista, ennakoitavaa ja kustannustehokasta toimintaa.
+            Team Kosken tarjoaa kattavan valikoiman teollisuuden palveluja, jotka on suunniteltu tukemaan sekä yksittäisiä projekteja 
+            sekä huoltoseisokkeja. Jokainen palvelu on rakennettu tukemaan turvallista, ennakoitavaa ja kustannustehokasta toimintaa.
           </p>
         </header>
 
         <div class="grid services-grid">
-          <article class="card service-card">
+          <article class="card service-card scroll-reveal">
             <h3>Projektinjohto</h3>
             <p>
-              Ammattitaitoinen projektinjohtomme vastaa hankkeiden suunnittelusta, ohjauksesta ja raportoinnista koko elinkaaren ajan.
-              Huolehdimme tavoitteiden määrittelystä, riskien hallinnasta sekä resursoinnista niin, että asiakkaan tuotanto pysyy
+              Ammattitaitoinen projektinjohtomme vastaa hankkeiden ja huoltoseisokkien suunnittelusta, ohjauksesta ja raportoinnista. 
+              Huolehdimme tavoitteiden määrittelystä, aikataulusta, riskien hallinnasta sekä resursoinnista niin, että asiakkaan tuotanto pysyy 
               käynnissä ja muutokset saadaan vietyä läpi hallitusti.
             </p>
             <p>
-              Selkeä projektinjohto vähentää viivästyksiä, auttaa pitämään budjetin kurissa ja tuo läpinäkyvyyttä kaikkien osapuolten
+              Selkeä projektinjohto vähentää viivästyksiä, auttaa pitämään budjetin kurissa ja tuo läpinäkyvyyttä kaikkien osapuolten 
               väliseen yhteistyöhön.
             </p>
           </article>
 
-          <article class="card service-card">
+          <article class="card service-card scroll-reveal">
             <h3>Työmaavalvonta</h3>
             <p>
-              Työmaavalvonta varmistaa, että työt etenevät suunnitellusti, turvallisesti ja sovittujen standardien mukaisesti.
+              Työmaavalvonta varmistaa, että työt etenevät suunnitellusti, aikataulujen mukaisesti, turvallisesti ja sovittujen standardien mukaisesti. 
               Team Kosken valvoo urakoitsijoiden työtä, dokumentoi toteutuksen ja huolehtii, että laadusta ei tingitä tiukkojenkaan aikataulujen alla.
             </p>
             <p>
@@ -189,10 +167,10 @@
             </p>
           </article>
 
-          <article class="card service-card">
+          <article class="card service-card scroll-reveal">
             <h3>Toimitusvalvonta</h3>
             <p>
-              Huolehdimme hankintojen ja toimitusten valvonnasta niin kotimaassa kuin kansainvälisissä projekteissa. Tarkistamme toimitusten laadun,
+              Huolehdimme hankintojen ja toimitusten valvonnasta niin kotimaassa kuin kansainvälisissä projekteissa. Tarkistamme toimitusten laadun, 
               aikataulun ja dokumentaation, jotta asennusvaihe voi käynnistyä suunnitellusti eikä tuotanto viivästy puutteellisten komponenttien vuoksi.
             </p>
             <p>
@@ -200,22 +178,22 @@
             </p>
           </article>
 
-          <article class="card service-card">
+          <article class="card service-card scroll-reveal">
             <h3>Kunnossapitopalvelut</h3>
             <p>
-              Tarjoamme kokonaisvaltaiset kunnossapitoratkaisut, joilla varmistetaan tuotannon jatkuvuus ja vähennetään suunnittelemattomia seisokkeja.
+              Tarjoamme kokonaisvaltaiset kunnossapitoratkaisut, joilla varmistetaan tuotannon jatkuvuus ja vähennetään suunnittelemattomia seisokkeja. 
               Yhdistämme ennakoivan kunnossapidon, älykkään suunnittelun ja käytännön kenttätyön.
             </p>
             <p>
-              Kunnossapitopalvelut räätälöidään aina asiakkaan prosessien mukaan – oli kyse yksittäisestä linjasta, koko tuotantolaitoksesta
+              Kunnossapitopalvelut räätälöidään aina asiakkaan prosessien mukaan – oli kyse yksittäisestä linjasta, koko tuotantolaitoksesta 
               tai seisokkien kokonaisvaltaisesta hallinnasta.
             </p>
           </article>
 
-          <article class="card service-card">
+          <article class="card service-card scroll-reveal">
             <h3>Henkilöstövuokraus</h3>
             <p>
-              Toimitamme kokeneita ja osaavia ammattilaisia teollisuuden eri tarpeisiin. Henkilöstöä voidaan vuokrata niin lyhyisiin projekteihin,
+              Toimitamme kokeneita ja osaavia ammattilaisia teollisuuden eri tarpeisiin. Henkilöstöä voidaan vuokrata niin lyhyisiin projekteihin, 
               suunniteltuihin seisokkeihin kuin pitkäaikaisiin tuotannon tukitehtäviin.
             </p>
             <p>
@@ -223,221 +201,197 @@
             </p>
           </article>
 
-          <article class="card service-card">
-            <h3>Teollisuuden putkisto-urakointi</h3>
+          <article class="card service-card scroll-reveal">
+            <h3>Teollisuuden putkistoasennukset</h3>
             <p>
-              Toteutamme vaativatkin putkistoasennukset ja -urakoinnit turvallisesti ja ammattitaidolla. Hallitsemme niin uusasennukset,
-              muutostyöt kuin perusparannukset teollisuuden eri prosessikohteissa.
+              Toteutamme vaativatkin putkistoasennukset ja hitsaukset ja -urakoinnit turvallisesti ja ammattitaidolla standardien mukaisesti. 
+              Hallitsemme niin investointihankkeet uusasennukset, muutostyöt kuin perusparannukset teollisuuden eri prosessikohteissa.
             </p>
             <p>
-              Putkisto-urakointimme perustuu huolelliseen suunnitteluun, laadukkaisiin materiaaleihin sekä tarkkaan asennus- ja käyttöönotto­prosessiin.
+              Putkistoasennukset perustuvat huolelliseen työnsuunnitteluun, laadukkaisiin materiaaleihin sekä tarkkaan asennus- ja käyttöönottoprosessiin. 
+              Hallitsemme kattavasti eri materiaalilaadut: austeniittiset ruostumattomat-, hiili-, kuumalujat- ja duplex-teräkset sekä titaanin.
             </p>
           </article>
         </div>
-                  <!-- MOBIILI: Palvelut (premium-kortit, avautuvat) -->
-          <div class="grid services-accordion" data-accordion="single">
-            <details class="card service-card acc-card">
-              <summary>Projektinjohto</summary>
-              <div class="acc-body">
-                <p>
-                  Ammattitaitoinen projektinjohtomme vastaa hankkeiden suunnittelusta, ohjauksesta ja raportoinnista koko elinkaaren ajan.
-                  Huolehdimme tavoitteiden määrittelystä, riskien hallinnasta sekä resursoinnista niin, että asiakkaan tuotanto pysyy
-                  käynnissä ja muutokset saadaan vietyä läpi hallitusti.
-                </p>
-                <p>
-                  Selkeä projektinjohto vähentää viivästyksiä, auttaa pitämään budjetin kurissa ja tuo läpinäkyvyyttä kaikkien osapuolten
-                  väliseen yhteistyöhön.
-                </p>
-              </div>
-            </details>
-
-            <details class="card service-card acc-card">
-              <summary>Työmaavalvonta</summary>
-              <div class="acc-body">
-                <p>
-                  Työmaavalvonta varmistaa, että työt etenevät suunnitellusti, turvallisesti ja sovittujen standardien mukaisesti.
-                  Team Kosken valvoo urakoitsijoiden työtä, dokumentoi toteutuksen ja huolehtii, että laadusta ei tingitä tiukkojenkaan aikataulujen alla.
-                </p>
-                <p>
-                  Asiakas saa ajantasaisen tilannekuvan työmaan etenemisestä ja voi luottaa siihen, että kokonaisuus pysyy hallinnassa alusta loppuun.
-                </p>
-              </div>
-            </details>
-
-            <details class="card service-card acc-card">
-              <summary>Toimitusvalvonta</summary>
-              <div class="acc-body">
-                <p>
-                  Huolehdimme hankintojen ja toimitusten valvonnasta niin kotimaassa kuin kansainvälisissä projekteissa. Tarkistamme toimitusten laadun,
-                  aikataulun ja dokumentaation, jotta asennusvaihe voi käynnistyä suunnitellusti eikä tuotanto viivästy puutteellisten komponenttien vuoksi.
-                </p>
-                <p>
-                  Toimitusvalvonta on tärkeä osa kokonaisprojektia, jossa pienetkin viiveet voivat kertautua merkittäviksi kustannuksiksi.
-                </p>
-              </div>
-            </details>
-
-            <details class="card service-card acc-card">
-              <summary>Kunnossapitopalvelut</summary>
-              <div class="acc-body">
-                <p>
-                  Tarjoamme kokonaisvaltaiset kunnossapitoratkaisut, joilla varmistetaan tuotannon jatkuvuus ja vähennetään suunnittelemattomia seisokkeja.
-                  Yhdistämme ennakoivan kunnossapidon, älykkään suunnittelun ja käytännön kenttätyön.
-                </p>
-                <p>
-                  Kunnossapitopalvelut räätälöidään aina asiakkaan prosessien mukaan – oli kyse yksittäisestä linjasta, koko tuotantolaitoksesta
-                  tai seisokkien kokonaisvaltaisesta hallinnasta.
-                </p>
-              </div>
-            </details>
-
-            <details class="card service-card acc-card">
-              <summary>Henkilöstövuokraus</summary>
-              <div class="acc-body">
-                <p>
-                  Toimitamme kokeneita ja osaavia ammattilaisia teollisuuden eri tarpeisiin. Henkilöstöä voidaan vuokrata niin lyhyisiin projekteihin,
-                  suunniteltuihin seisokkeihin kuin pitkäaikaisiin tuotannon tukitehtäviin.
-                </p>
-                <p>
-                  Oikea osaaminen oikeassa paikassa vapauttaa asiakkaan resursseja ja tasapainottaa henkilöstökuormitusta kiireisimpinä aikoina.
-                </p>
-              </div>
-            </details>
-
-            <details class="card service-card acc-card">
-              <summary>Teollisuuden putkisto-urakointi</summary>
-              <div class="acc-body">
-                <p>
-                  Toteutamme vaativatkin putkistoasennukset ja -urakoinnit turvallisesti ja ammattitaidolla. Hallitsemme niin uusasennukset,
-                  muutostyöt kuin perusparannukset teollisuuden eri prosessikohteissa.
-                </p>
-                <p>
-                  Putkisto-urakointimme perustuu huolelliseen suunnitteluun, laadukkaisiin materiaaleihin sekä tarkkaan asennus- ja käyttöönotto­prosessiin.
-                </p>
-              </div>
-            </details>
-          </div>
-
+        
+        <!-- MOBIILI: Palvelut (accordion) -->
+        <div class="grid services-accordion" data-accordion="single">
+          <details class="card service-card acc-card scroll-reveal">
+            <summary>Projektinjohto</summary>
+            <div class="acc-body">
+                    <p>Ammattitaitoinen projektinjohtomme vastaa hankkeiden ja huoltoseisokkien suunnittelusta, ohjauksesta ja raportoinnista. Huolehdimme tavoitteiden määrittelystä, aikataulusta, riskien hallinnasta sekä resursoinnista niin, että asiakkaan tuotanto pysyy käynnissä ja muutokset saadaan vietyä läpi hallitusti.</p>
+                    <p>Selkeä projektinjohto vähentää viivästyksiä, auttaa pitämään budjetin kurissa ja tuo läpinäkyvyyttä kaikkien osapuolten väliseen yhteistyöhön.</p>
+            </div>
+          </details>
+          <details class="card service-card acc-card scroll-reveal">
+            <summary>Työmaavalvonta</summary>
+            <div class="acc-body">
+              <p>Työmaavalvonta varmistaa, että työt etenevät suunnitellusti, aikataulujen mukaisesti, turvallisesti ja sovittujen standardien mukaisesti. Team Kosken valvoo urakoitsijoiden työtä, dokumentoi toteutuksen ja huolehtii, että laadusta ei tingitä tiukkojenkaan aikataulujen alla.</p>
+              <p>Asiakas saa ajantasaisen tilannekuvan työmaan etenemisestä ja voi luottaa siihen, että kokonaisuus pysyy hallinnassa alusta loppuun.</p>
+            </div>
+          </details>
+          <details class="card service-card acc-card scroll-reveal">
+            <summary>Toimitusvalvonta</summary>
+            <div class="acc-body">
+              <p>Huolehdimme hankintojen ja toimitusten valvonnasta niin kotimaassa kuin kansainvälisissä projekteissa. Tarkistamme toimitusten laadun, aikataulun ja dokumentaation, jotta asennusvaihe voi käynnistyä suunnitellusti eikä tuotanto viivästy puutteellisten komponenttien vuoksi.</p>
+              <p>Toimitusvalvonta on tärkeä osa kokonaisprojektia, jossa pienetkin viiveet voivat kertautua merkittäviksi kustannuksiksi.</p>
+            </div>
+          </details>
+          <details class="card service-card acc-card scroll-reveal">
+            <summary>Kunnossapitopalvelut</summary>
+            <div class="acc-body">
+              <p>Tarjoamme kokonaisvaltaiset kunnossapitoratkaisut, joilla varmistetaan tuotannon jatkuvuus ja vähennetään suunnittelemattomia seisokkeja. Yhdistämme ennakoivan kunnossapidon, älykkään suunnittelun ja käytännön kenttätyön.</p>
+              <p>Kunnossapitopalvelut räätälöidään aina asiakkaan prosessien mukaan – oli kyse yksittäisestä linjasta, koko tuotantolaitoksesta tai seisokkien kokonaisvaltaisesta hallinnasta.</p>
+            </div>
+          </details>
+          <details class="card service-card acc-card scroll-reveal">
+            <summary>Henkilöstövuokraus</summary>
+            <div class="acc-body">
+                          <p>
+              Toimitamme kokeneita ja osaavia ammattilaisia teollisuuden eri tarpeisiin. Henkilöstöä voidaan vuokrata niin lyhyisiin projekteihin, 
+              suunniteltuihin seisokkeihin kuin pitkäaikaisiin tuotannon tukitehtäviin.
+            </p>
+            <p>
+              Oikea osaaminen oikeassa paikassa vapauttaa asiakkaan resursseja ja tasapainottaa henkilöstökuormitusta kiireisimpinä aikoina.
+            </p>
+            </div>
+          </details>
+          <details class="card service-card acc-card scroll-reveal">
+            <summary>Teollisuuden putkistoasennukset</summary>
+            <div class="acc-body">
+                          <p>
+              Toteutamme vaativatkin putkistoasennukset ja hitsaukset ja -urakoinnit turvallisesti ja ammattitaidolla standardien mukaisesti. 
+              Hallitsemme niin investointihankkeet uusasennukset, muutostyöt kuin perusparannukset teollisuuden eri prosessikohteissa.
+            </p>
+            <p>
+              Putkistoasennukset perustuvat huolelliseen työnsuunnitteluun, laadukkaisiin materiaaleihin sekä tarkkaan asennus- ja käyttöönottoprosessiin. 
+              Hallitsemme kattavasti eri materiaalilaadut: austeniittiset ruostumattomat-, hiili-, kuumalujat- ja duplex-teräkset sekä titaanin.
+            </p>
+            </div>
+          </details>
+        </div>
       </div>
     </section>
-
-
 
     <!-- Toimialat -->
     <section id="toimialat" class="section">
       <div class="container">
-        <header class="section-header">
+        <header class="section-header scroll-reveal">
           <h2>Toimialat, joita palvelemme</h2>
           <p>
-            Team Kosken tuntee raskaiden teollisuusympäristöjen vaatimukset. Työskentelemme tiiviisti asiakkaiden kanssa energia-, paperi-, sellu-
+            Team Kosken tuntee raskaiden teollisuusympäristöjen vaatimukset. Työskentelemme tiiviisti asiakkaiden kanssa energia-, kemian-, paperi-, sellu- 
             ja terästeollisuudessa, joissa luotettavuus, turvallisuus ja aikataulujen pitävyys ovat keskeisiä kilpailutekijöitä.
           </p>
         </header>
 
         <div class="grid industries-grid">
-          <article class="card industry-card">
-            <h3>Energia­teollisuus</h3>
+          <article class="card industry-card scroll-reveal">
+            <h3>Energiateollisuus</h3>
             <p>
-              Energialaitoksissa korostuvat käyttövarmuus ja turvallisuus. Huolehdimme seisokkien suunnittelusta, urakoitsijoiden koordinoinnista
+              Energialaitoksissa korostuvat käyttövarmuus ja turvallisuus. Huolehdimme seisokkien toteutuksesta, valvonnasta, urakoitsijoiden koordinoinnista 
               ja kunnossapidosta, jotta tuotanto pysyy käynnissä myös vaativissa olosuhteissa.
             </p>
           </article>
 
-          <article class="card industry-card">
-            <h3>Paperi- ja kartonki­teollisuus</h3>
+          <article class="card industry-card scroll-reveal">
+            <h3>Paperi- ja kartonkiteollisuus</h3>
             <p>
-              Paperi- ja kartonkiteollisuuden tuotantolinjojen käytettävyys on ratkaisevaa. Tarjoamme projektinjohtoa, kunnossapitoa sekä henkilöstövuokrausta
-              linjojen modernisointiin, laajennuksiin ja seisokkeihin.
+              Paperi- ja kartonkiteollisuuden tuotantolinjojen käytettävyys on ratkaisevaa. Tarjoamme projektinjohtoa, kunnossapitoa, putkisto- ja mekaanisia-asennuksia 
+              sekä henkilöstövuokrausta linjojen modernisointiin, laajennuksiin ja seisokkeihin.
             </p>
           </article>
 
-          <article class="card industry-card">
-            <h3>Sellu­teollisuus</h3>
+          <article class="card industry-card scroll-reveal">
+            <h3>Sellu- ja kemianteollisuus</h3>
             <p>
-              Sellutehtaissa käsitellään suuria kokonaisuuksia, joissa prosessien hallinta ja turvallisuus ovat etusijalla. Team Kosken tukee tuotantoa
-              suunnittelusta asennuksiin ja jatkuvaan kunnossapitoon.
+              Sellu- ja kemiantehtaissa käsitellään suuria kokonaisuuksia, joissa prosessien hallinta ja turvallisuus ovat etusijalla. Team Kosken tukee tuotantoa 
+              työnsuunnittelusta asennuksiin ja jatkuvaan kunnossapitoon.
             </p>
           </article>
 
-          <article class="card industry-card">
-            <h3>Teräs­teollisuus</h3>
+          <article class="card industry-card scroll-reveal">
+            <h3>Terästeollisuus</h3>
             <p>
-              Terästeollisuuden ympäristö edellyttää vahvaa käytännön osaamista ja kestävää toteutustapaa. Putkisto-urakointi, kunnossapito ja työmaavalvonta
+              Terästeollisuuden ympäristö edellyttää vahvaa käytännön osaamista ja kestävää toteutustapaa. Putkisto-urakointi, kunnossapito ja työmaavalvonta 
               toteutetaan terästeollisuuden vaatimukset huomioiden.
             </p>
           </article>
         </div>
-        <!-- MOBIILI: Toimialat (premium-kortit, avautuvat) -->
-          <div class="grid industries-accordion">
-            <details class="card industry-card acc-card">
-              <summary>Energiateollisuus</summary>
-              <div class="acc-body">
-                <p>
-                  Energialaitoksissa korostuvat käyttövarmuus ja turvallisuus. Huolehdimme seisokkien suunnittelusta, urakoitsijoiden koordinoinnista
-                  ja kunnossapidosta, jotta tuotanto pysyy käynnissä myös vaativissa olosuhteissa.
-                </p>
-              </div>
-            </details>
-
-            <details class="card industry-card acc-card">
-              <summary>Paperi- ja kartonkiteollisuus</summary>
-              <div class="acc-body">
-                <p>
-                  Paperi- ja kartonkiteollisuuden tuotantolinjojen käytettävyys on ratkaisevaa. Tarjoamme projektinjohtoa, kunnossapitoa sekä henkilöstövuokrausta
-                  linjojen modernisointiin, laajennuksiin ja seisokkeihin.
-                </p>
-              </div>
-            </details>
-
-            <details class="card industry-card acc-card">
-              <summary>Selluteollisuus</summary>
-              <div class="acc-body">
-                <p>
-                  Sellutehtaissa käsitellään suuria kokonaisuuksia, joissa prosessien hallinta ja turvallisuus ovat etusijalla. Team Kosken tukee tuotantoa
-                  suunnittelusta asennuksiin ja jatkuvaan kunnossapitoon.
-                </p>
-              </div>
-            </details>
-
-            <details class="card industry-card acc-card">
-              <summary>Terästeollisuus</summary>
-              <div class="acc-body">
-                <p>
-                  Terästeollisuuden ympäristö edellyttää vahvaa käytännön osaamista ja kestävää toteutustapaa. Putkisto-urakointi, kunnossapito ja työmaavalvonta
-                  toteutetaan terästeollisuuden vaatimukset huomioiden.
-                </p>
-              </div>
-            </details>
-          </div>
-
       </div>
     </section>
 
 
-    <!-- Meistäaa -->
+  </div>
+
+    <!-- Meistä -->
     <section id="meista" class="section section-light">
       <div class="container about-grid">
-        <div class="about-text">
+        <div class="about-text scroll-reveal">
           <header class="section-header">
             <h2>Team Kosken – luotettava kumppani teollisuudelle</h2>
           </header>
           <p>
-            Team Koskenin toiminnan ytimessä on ajatus pitkäaikaisesta kumppanuudesta. Emme ole vain yksittäisten projektien toteuttaja,
+            Team Koskenin toiminnan ytimessä on ajatus pitkäaikaisesta kumppanuudesta. Emme ole vain yksittäisten projektien toteuttaja, 
             vaan kumppani, joka tuntee teollisuusympäristöjen arjen, seisokit, riskit ja kehitystarpeet.
           </p>
           <p>
-            Toimimme joustavasti, kustannustehokkaasti ja turvallisuus edellä. Haluamme, että asiakkaan on helppo luottaa meihin tilanteessa kuin tilanteessa –
+            Toimimme joustavasti, kustannustehokkaasti ja turvallisuus edellä. Haluamme, että asiakkaan on helppo luottaa meihin tilanteessa kuin tilanteessa – 
             oli kyse nopeasta resurssitarpeesta, laajasta investointihankkeesta tai tuotannon pitkäjänteisestä kehittämisestä.
           </p>
           <ul class="benefits-list">
-            <li><strong>Turvallisuus ensin:</strong> Toimimme aina voimassa olevien turvallisuus­määräysten ja asiakkaan omien ohjeiden mukaan.</li>
+            <li><strong>Turvallisuus ensin:</strong> Toimimme aina voimassa olevien turvallisuusmääräysten ja asiakkaan omien ohjeiden mukaan.</li>
             <li><strong>Kokemus teollisuudesta:</strong> Ymmärrämme käytännön työn haasteet ja prosessien vaatimukset.</li>
             <li><strong>Joustava resursointi:</strong> Skaalaamme tiimit projektin laajuuden ja aikataulun mukaan.</li>
             <li><strong>Läpinäkyvä yhteistyö:</strong> Raportointi ja kommunikointi ovat selkeitä projektin kaikissa vaiheissa.</li>
           </ul>
         </div>
-        <div class="about-image-wrapper">
+        <div class="about-image-wrapper scroll-reveal">
           <img src="images/toinen.png" alt="Teollisuuden ammattilaiset työmaalla" class="about-image">
+        </div>
+      </div>
+    </section>
+
+    <!-- 
+    ============================================
+    AJANKOHTAISTA - HELPPO PÄIVITTÄÄ
+    ============================================
+    OHJE: Voit päivittää tämän osion itse muokkaamalla alla olevaa HTML-koodia.
+    
+    1. Avaa tämä tiedosto (index.html) tekstieditorissa (esim. Notepad, TextEdit)
+    2. Etsi "AJANKOHTAISTA" -kohta
+    3. Muokkaa tekstiä alla olevien ohjeiden mukaan
+    
+    UUSI UUTINEN:
+    Kopioi tämä koodi ja liitä se viimeisen </article> -tagin jälkeen:
+    
+    <article class="card news-card scroll-reveal">
+      <div class="news-date">2026</div>
+      <h3>OTSIKKO TÄHÄN</h3>
+      <p>TEKSTI TÄHÄN</p>
+    </article>
+    
+    VANHAN MUOKKAAMINEN:
+    Vaihda vain teksti <h3> ja <p> -tagien välistä.
+    -->
+    <section id="ajankohtaista" class="section">
+      <div class="container">
+        <header class="section-header scroll-reveal">
+          <h2>Ajankohtaista</h2>
+        </header>
+        <div class="news-grid">
+          
+          <!-- Uutinen 1 -->
+          <article class="card news-card scroll-reveal">
+            <div class="news-date">2026</div>
+            <h3>Hitsauksen laadunhallintajärjestelmän auditointi</h3>
+            <p>
+              Auditoimme hitsauksen laadunhallintajärjestelmää <strong>EN-3834-2</strong> -standardin mukaisesti. 
+              Tämä takaa korkean laadun putkistoasennuksissamme ja varmistaa asiakkaillemme luotettavan ja standardien mukaisen toteutuksen.
+            </p>
+          </article>
+          
+          <!-- Voit lisätä uusia uutisia tähän -->
+          
         </div>
       </div>
     </section>
@@ -445,12 +399,12 @@
     <!-- Yhteys -->
     <section id="yhteys" class="section section-accent">
       <div class="container contact-grid">
-        <div class="contact-info">
+        <div class="contact-info scroll-reveal">
           <header class="section-header">
             <h2>Ota yhteyttä Team Koskeniin</h2>
           </header>
           <p>
-            Haluatko lisätietoja palveluistamme, suunnitteletko uutta projektia tai tarvitsetko nopeasti lisäresursseja teollisuushankkeeseen?
+            Haluatko lisätietoja palveluistamme, suunnitteletko uutta projektia tai tarvitsetko nopeasti lisäresursseja teollisuushankkeeseen? 
             Jätä viesti yhteydenottolomakkeella tai ota yhteyttä suoraan sähköpostitse.
           </p>
           <p class="contact-highlight">
@@ -460,21 +414,27 @@
           <p>
             Vastaamme mahdollisimman pian ja käymme läpi yhdessä, miten voimme tukea teidän tuotantoanne, projektejanne ja kunnossapidon suunnittelua.
           </p>
+          
+          <!-- Napit modaaleille -->
+          <div class="contact-buttons scroll-reveal">
+            <button class="btn btn-outline" type="button" id="open-leadership-bottom">Yhteyshenkilöt</button>
+            <button class="btn btn-outline" type="button" id="open-tarjous-bottom">Tarjouspyynnöt</button>
+          </div>
         </div>
 
-        <div class="contact-form-wrapper">
+        <div class="contact-form-wrapper scroll-reveal">
           <form id="contact-form" class="contact-form" action="mailto:info@teamkosken.fi" method="post" novalidate>
             <div class="form-group">
-              <label for="name">Nimi*</label>
-              <input type="text" id="name" name="name" required placeholder="Etunimi Sukunimi">
+              <label for="name">Nimi <span class="required">*</span></label>
+              <input type="text" id="name" name="name" required placeholder="Etunimi Sukunimi" autocomplete="name">
             </div>
             <div class="form-group">
-              <label for="email">Sähköposti*</label>
-              <input type="email" id="email" name="email" required placeholder="esimerkki@yritys.fi">
+              <label for="email">Sähköposti <span class="required">*</span></label>
+              <input type="email" id="email" name="email" required placeholder="esimerkki@yritys.fi" autocomplete="email">
             </div>
             <div class="form-group">
               <label for="company">Yritys</label>
-              <input type="text" id="company" name="company" placeholder="Yrityksen nimi">
+              <input type="text" id="company" name="company" placeholder="Yrityksen nimi" autocomplete="organization">
             </div>
             <div class="form-group">
               <label for="service">Kiinnostava palvelu</label>
@@ -485,12 +445,12 @@
                 <option value="toimitusvalvonta">Toimitusvalvonta</option>
                 <option value="kunnossapito">Kunnossapitopalvelut</option>
                 <option value="henkilostovuokraus">Henkilöstövuokraus</option>
-                <option value="putkisto">Teollisuuden putkisto-urakointi</option>
+                <option value="putkisto">Teollisuuden putkistoasennukset</option>
                 <option value="muu">Muu / useampi palvelu</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="message">Viesti*</label>
+              <label for="message">Viesti <span class="required">*</span></label>
               <textarea id="message" name="message" rows="4" required placeholder="Kerro lyhyesti tarpeestasi, aikataulusta ja toimialasta."></textarea>
             </div>
             <button type="submit" class="btn btn-primary full-width">Lähetä viesti</button>
@@ -507,7 +467,7 @@
       <div class="footer-col">
         <h3>Team Kosken</h3>
         <p>
-          Luotettava kumppani teollisuuden projektinjohtoon, kunnossapitoon ja putkisto-urakointiin.
+          Luotettava kumppani teollisuuden projektinjohtoon, kunnossapitoon ja putkisto-urakointiin. 
           Toimimme joustavasti, turvallisesti ja kustannustehokkaasti.
         </p>
       </div>
@@ -517,7 +477,8 @@
           <li><a href="#palvelut">Palvelut</a></li>
           <li><a href="#toimialat">Toimialat</a></li>
           <li><a href="#meista">Meistä</a></li>
-          <li><a href="#yhteys">Yhteys</a></li>
+          <li><a href="#ajankohtaista">Ajankohtaista</a></li>
+          <li><a href="#yhteys">Ota yhteyttä</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -528,81 +489,138 @@
         </p>
       </div>
     </div>
+    
+    <!-- Kosken Asennus - pääyhtiö -->
+    <div class="container partner-section">
+      <div class="partner-box">
+        <p>Team Kosken on <strong>Kosken Asennus Oy:n</strong> tytäryhtiö</p>
+        <a href="https://www.koskenasennus.fi" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          Siirry Kosken Asennuksen sivuille
+        </a>
+      </div>
+    </div>
+    
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
         <p>&copy; <span id="year"></span> Team Kosken. Kaikki oikeudet pidätetään.</p>
-        <a href="sitemap.xml">Sivukartta (sitemap)</a>
+        <a href="sitemap.xml">Sivukartta</a>
       </div>
     </div>
   </footer>
-<!-- Johto / henkilöt (modal) -->
-<div class="modal" id="leadership-modal" aria-hidden="true">
-  <div class="modal-backdrop" data-close-modal></div>
 
-  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="leadership-title">
-    <div class="modal-header">
-      <h2 id="leadership-title">Yrityksen johto</h2>
-      <button class="modal-close" type="button" aria-label="Sulje" data-close-modal>✕</button>
-    </div>
+  <!-- ============================================
+       MODAALI: Ota yhteyttä (4 henkilöä)
+       ============================================ -->
+  <div class="modal" id="leadership-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="leadership-title">
+      <div class="modal-header">
+        <div class="modal-brand">
+          <img class="modal-logo" src="images/LOGO1.svg" alt="Team Kosken">
+        </div>
+        <h2 id="leadership-title">Yhteyshenkilöt</h2>
+        <button class="modal-close" type="button" aria-label="Sulje" data-close-modal>
+          <span aria-hidden="true">✕</span>
+        </button>
+      </div>
+      <div class="modal-content">
+        <div class="team-grid">
+          
+          <!-- Tuomas Keskimaunu -->
+          <article class="team-card">
+            <img src="images/johto-1.webp" alt="Tuomas Keskimaunu" loading="lazy" decoding="async">
+            <div class="team-info">
+              <h3>Tuomas Keskimaunu</h3>
+              <p class="team-role">Toimitusjohtaja</p>
+              <p class="team-links">
+                <a href="tel:+358405317671">+358 40 531 7671</a><br>
+                <a href="mailto:tuomas.keskimaunu@teamkosken.fi">tuomas.keskimaunu@teamkosken.fi</a>
+              </p>
+            </div>
+          </article>
 
-    <div class="modal-content">
-      <div class="team-grid">
-        <!-- VAIHDA näihin oikeat nimet, roolit, numerot ja kuvat -->
-        <article class="team-card">
-          <img src="images/johto-1.webp" alt="Etu Sukunimi, toimitusjohtaja" loading="lazy">
-          <div class="team-info">
-            <h3>Tuomas Keskimaunu</h3>
-            <p class="team-role">Toimitusjohtaja</p>
-            <p class="team-links">
-              <a href="tel:+358401234567">+358 40 531 7671</a><br>
-              <a href="mailto:etu.sukunimi@teamkosken.fi">tuomas.keskimaunu@teamkosken.fi</a>
-            </p>
-          </div>
-        </article>
+          <!-- Jukka Sihvonen -->
+          <article class="team-card">
+            <img src="images/johto-2.webp" alt="Jukka Sihvonen" loading="lazy" decoding="async">
+            <div class="team-info">
+              <h3>Jukka Sihvonen</h3>
+              <p class="team-role">Tekninen johtaja, IWE</p>
+              <p class="team-links">
+                <a href="tel:+358503901058">+358 50 390 1058</a><br>
+                <a href="mailto:jukka.sihvonen@teamkosken.fi">jukka.sihvonen@teamkosken.fi</a>
+              </p>
+            </div>
+          </article>
 
-        <article class="team-card">
-          <img src="images/johto-2.webp" alt="Etu Sukunimi, projektinjohto" loading="lazy">
-          <div class="team-info">
-            <h3>Jukka Sihvonen</h3>
-            <p class="team-role">TEKNINEN JOHTAJA, IWE</p>
-            <p class="team-links">
-              <a href="tel:+358401234567">+358 50 390 1058</a><br>
-              <a href="mailto:etu.sukunimi@teamkosken.fi">jukka.sihvonen@teamkosken.fi</a>
-            </p>
-          </div>
-        </article>
+          <!-- Jani Kolmonen -->
+          <article class="team-card">
+            <img src="images/johto-3.webp" alt="Jani Kolmonen" loading="lazy" decoding="async">
+            <div class="team-info">
+              <h3>Jani Kolmonen</h3>
+              <p class="team-role">Palvelupäällikkö, Rekrytoinnit</p>
+              <p class="team-links">
+                <a href="tel:+358445571733">+358 44 557 1733</a><br>
+                <a href="mailto:jani.kolmonen@teamkosken.fi">jani.kolmonen@teamkosken.fi</a>
+              </p>
+            </div>
+          </article>
 
-        <article class="team-card">
-          <img src="images/johto-3.webp" alt="Etu Sukunimi, kunnossapito" loading="lazy">
-          <div class="team-info">
-            <h3>Jani Kolmonen</h3>
-            <p class="team-role">Palvelupäälikkö, HR</p>
-            <p class="team-links">
-              <a href="tel:+358401234567">+358 44 557 1733</a><br>
-              <a href="mailto:etu.sukunimi@teamkosken.fi">jani.kolmonen@teamkosken.fi</a>
-            </p>
-          </div>
-        </article>
-
-                <article class="team-card">
-          <img src="images/johto-4.webp" alt="Etu Sukunimi, projektinjohto" loading="lazy">
-          <div class="team-info">
-            <h3>Jani Peurasaari</h3>
-            <p class="team-role">Operatiivinen johtaja</p>
-            <p class="team-links">
-              <a href="tel:+358401234567">+358 40 765 0177</a><br>
-              <a href="mailto:etu.sukunimi@teamkosken.fi">jani.peurasaari@teamkosken.fi</a>
-            </p>
-          </div>
-        </article>
-
+          <!-- Jani Peurasaari -->
+          <article class="team-card">
+            <!-- KOMMENTTI: Cropaa kuva niin että naama näkyy kokonaan -->
+            <img src="images/johto-4.webp" alt="Jani Peurasaari" loading="lazy" decoding="async" class="peurasaari-img">
+            <div class="team-info">
+              <h3>Jani Peurasaari</h3>
+              <p class="team-role">Operatiivinen johtaja</p>
+              <p class="team-links">
+                <a href="tel:+358407650177">+358 40 765 0177</a><br>
+                <a href="mailto:jani.peurasaari@teamkosken.fi">jani.peurasaari@teamkosken.fi</a>
+              </p>
+            </div>
+          </article>
+          
+        </div>
       </div>
     </div>
   </div>
-</div>
-<!-- /Johto modal -->
+
+  <!-- ============================================
+       MODAALI: Tarjouspyynnöt (vain Tuomas)
+       ============================================ -->
+  <div class="modal" id="tarjous-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-tarjous></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="tarjous-title">
+      <div class="modal-header">
+        <div class="modal-brand">
+          <img class="modal-logo" src="images/LOGO1.svg" alt="Team Kosken">
+        </div>
+        <h2 id="tarjous-title">Tarjouspyynnöt</h2>
+        <button class="modal-close" type="button" aria-label="Sulje" data-close-tarjous>
+          <span aria-hidden="true">✕</span>
+        </button>
+      </div>
+      <div class="modal-content">
+        <div class="team-grid single-card">
+          
+          <!-- Vain Tuomas Keskimaunu -->
+          <article class="team-card">
+            <img src="images/johto-1.webp" alt="Tuomas Keskimaunu" loading="lazy" decoding="async">
+            <div class="team-info">
+              <h3>Tuomas Keskimaunu</h3>
+              <p class="team-role">Toimitusjohtaja</p>
+              <p class="team-links">
+                <a href="tel:+358405317671">+358 40 531 7671</a><br>
+                <a href="mailto:tuomas.keskimaunu@teamkosken.fi">tuomas.keskimaunu@teamkosken.fi</a>
+              </p>
+            </div>
+          </article>
+          
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- JavaScript -->
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

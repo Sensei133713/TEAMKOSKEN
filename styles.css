@@ -1,3 +1,8 @@
+/* ============================================
+   TEAM KOSKEN - MODERNI CSS 2025
+   Ammattimaiset tiimikuvat + kaikki modernit efektit
+   ============================================ */
+
 /* Perusasetukset ja typografia */
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -6,11 +11,53 @@ body{
   line-height:1.6;
   color:#e5e7eb;
   background:radial-gradient(circle at top,#111827 0,#020617 55%,#020617 100%);
+  position:relative;
 }
+
+/* Noise texture - hienovarainen tekstuuri */
+body::after{
+  content:'';
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity:0.025;
+  pointer-events:none;
+  z-index:9999;
+}
+
 img{max-width:100%;display:block;}
 a{text-decoration:none;color:inherit;}
 ul{list-style:none;}
 section{scroll-margin-top:5rem;}
+
+/* Custom scrollbar - tyylikäs vierityspalkki */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:#020617;}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,#2563eb,#38bdf8);
+  border-radius:3px;
+}
+::-webkit-scrollbar-thumb:hover{background:#38bdf8;}
+
+/* Skip link for accessibility */
+.skip-link{
+  position:absolute;
+  top:-100%;
+  left:50%;
+  transform:translateX(-50%);
+  background:#2563eb;
+  color:#fff;
+  padding:0.75rem 1.5rem;
+  z-index:9999;
+  text-decoration:none;
+  border-radius:0 0 8px 8px;
+  font-weight:500;
+  transition:top 0.2s ease;
+}
+.skip-link:focus{top:0;}
 
 /* Yleinen layout */
 .container{width:100%;max-width:1120px;margin:0 auto;padding:0 1.5rem;}
@@ -18,7 +65,16 @@ section{scroll-margin-top:5rem;}
 .section-light{background:linear-gradient(180deg,#0b1120,#020617);}
 .section-accent{background:linear-gradient(135deg,#0f172a,#020617);color:#f9fafb;}
 
-/* Painikkeet */
+/* Gradient-teksti otsikoille */
+.hero-text h1,
+.section-header h2{
+  background:linear-gradient(135deg,#f9fafb 0%,#e2e8f0 50%,#38bdf8 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* Painikkeet - Magnetic effect */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -30,7 +86,25 @@ section{scroll-margin-top:5rem;}
   cursor:pointer;
   font-size:0.95rem;
   letter-spacing:0.02em;
-  transition:transform .15s ease,box-shadow .15s ease,background .15s ease,border-color .15s ease,color .15s ease;
+  position:relative;
+  overflow:hidden;
+  transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.btn::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:0;
+  height:0;
+  background:rgba(255,255,255,0.1);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  transition:width 0.6s,height 0.6s;
+}
+.btn:hover::before{
+  width:300px;
+  height:300px;
 }
 .btn-primary{
   background:linear-gradient(135deg,#2563eb,#38bdf8);
@@ -39,37 +113,44 @@ section{scroll-margin-top:5rem;}
   box-shadow:0 12px 30px rgba(37,99,235,0.35);
 }
 .btn-primary:hover{
-  transform:translateY(-1px);
-  box-shadow:0 16px 40px rgba(37,99,235,0.5);
+  transform:translateY(-2px);
+  box-shadow:0 20px 40px rgba(37,99,235,0.5),0 0 0 1px rgba(56,189,248,0.3);
 }
 .btn-outline{
   background:transparent;
   color:#e5e7eb;
-  border-color:rgba(148,163,184,0.6);
+  border-color:rgba(148,163,184,0.4);
+  backdrop-filter:blur(4px);
 }
 .btn-outline:hover{
-  background:rgba(15,23,42,0.85);
-  border-color:#60a5fa;
+  background:rgba(15,23,42,0.6);
+  border-color:#38bdf8;
+  box-shadow:0 0 20px rgba(56,189,248,0.15);
 }
 .full-width{width:100%;}
 
-/* HEADER + NAV */
+/* ============================================
+   HEADER + NAV - Glassmorphism
+   ============================================ */
 .site-header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
   color:#f9fafb;
 }
 .nav-container{
-  position:sticky;
-  top:0;
-  z-index:50;
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:0.85rem 1.5rem;
-  backdrop-filter:blur(14px);
-  background:linear-gradient(90deg, rgba(7,12,24,0.92), rgba(15,23,42,0.86));
-  border-bottom:1px solid rgba(96,165,250,0.22);
-  box-shadow:0 16px 55px rgba(0,0,0,0.55);
-  transition:padding .25s ease,background .25s ease,box-shadow .25s ease,transform .25s ease;
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  background:rgba(15,23,42,0.75);
+  border-bottom:1px solid rgba(56,189,248,0.1);
+  box-shadow:0 4px 30px rgba(0,0,0,0.3);
+  transition:all 0.3s ease;
 }
 .logo{
   font-weight:700;
@@ -81,38 +162,49 @@ section{scroll-margin-top:5rem;}
   height:56px;
   width:auto;
   display:block;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
+
+/* NAVIGAATIO - Hover-viiva animaatio */
 .nav-menu{
   display:flex;
   gap:1.5rem;
   font-size:0.95rem;
-  filter:drop-shadow(0 10px 18px rgba(0,0,0,0.45));
 }
 .nav-menu a{
   padding:0.3rem 0;
-  border-bottom:2px solid transparent;
   color:#e5e7eb;
   opacity:0.9;
+  position:relative;
+  transition:all 0.3s ease;
+}
+.nav-menu a::after{
+  content:'';
+  position:absolute;
+  bottom:-2px;
+  left:0;
+  width:0;
+  height:2px;
+  background:linear-gradient(90deg,#38bdf8,#2563eb);
+  transition:width 0.3s ease;
+  box-shadow:0 0 10px rgba(56,189,248,0.5);
+}
+.nav-menu a:hover::after,
+.nav-menu a:focus-visible::after{
+  width:100%;
 }
 .nav-menu a:hover{
-  border-color:#38bdf8;
   opacity:1;
+  color:#38bdf8;
 }
 
 /* Header shrink skrollatessa */
 .nav-container.shrink{
-  padding:0.45rem 1.5rem;
-  background:linear-gradient(90deg,rgba(15,23,42,0.96),rgba(15,23,42,0.96));
-  box-shadow:0 16px 45px rgba(15,23,42,0.95);
-  transform:translateY(-2px);
+  padding:0.5rem 1.5rem;
+  background:rgba(15,23,42,0.9);
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
 }
-.nav-container.shrink .logo{
-  font-size:1rem;
-  opacity:0.9;
-}
-.nav-container.shrink .logo img{
-  height:40px !important; /* esim 40, valitse 36–44 */
-}
+.nav-container.shrink .logo img{height:40px !important;}
 
 /* Hamburger-nappi mobiilissa */
 .nav-toggle{
@@ -128,78 +220,104 @@ section{scroll-margin-top:5rem;}
   height:0.15rem;
   background:#f9fafb;
   border-radius:999px;
+  transition:all 0.3s ease;
 }
 
-/* HERO – moderni full-width kuva + overlay */
+/* ============================================
+   HERO - Animoitu tausta + Glassmorphism
+   ============================================ */
 .hero{
-  padding:4.5rem 0 4rem;
+  padding:8rem 0 4rem;
   background:
-    linear-gradient(135deg,rgba(15,23,42,0.96),rgba(15,23,42,0.9)),
-    url("https://source.unsplash.com/1600x900/?industry,factory");
+    linear-gradient(135deg,rgba(15,23,42,0.9),rgba(15,23,42,0.85)),
+    url("images/halli.png");
   background-size:cover;
   background-position:center;
+  position:relative;
+  overflow:hidden;
 }
+
+/* Liikkuva gradient-overlay */
+.hero::before{
+  content:'';
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background:radial-gradient(
+    circle at 30% 30%,
+    rgba(56,189,248,0.1) 0%,
+    transparent 50%
+  );
+  animation:pulse-glow 10s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes pulse-glow{
+  0%,100%{transform:translate(0,0) scale(1);opacity:0.4;}
+  50%{transform:translate(-5%,-5%) scale(1.1);opacity:0.7;}
+}
+
 .hero-grid{
   display:grid;
   grid-template-columns:1.25fr 1fr;
   gap:2.75rem;
   align-items:center;
+  position:relative;
+  z-index:1;
 }
 .hero-text h1{
-  font-size:2.25rem;
+  font-size:2.5rem;
   line-height:1.2;
   margin-bottom:1rem;
-  color:#f9fafb;
+  font-weight:700;
 }
 .hero-lead{
-  font-size:1.02rem;
+  font-size:1.05rem;
   margin-bottom:0.9rem;
-  color:#e5e7eb;
+  color:#cbd5e1;
   max-width:34rem;
 }
 .hero-text p{
   margin-bottom:0.7rem;
-  color:#cbd5f5;
+  color:#94a3b8;
   max-width:36rem;
 }
 .hero-actions{
   display:flex;
   flex-wrap:wrap;
   gap:0.75rem;
-  margin-top:0.8rem;
+  margin-top:1rem;
 }
-.hero-badges{
-  display:flex;
-  flex-wrap:wrap;
-  gap:0.4rem;
-  margin:0.7rem 0 0.4rem;
-}
-.hero-badge{
-  padding:0.15rem 0.8rem;
-  border-radius:999px;
-  border:1px solid rgba(148,163,184,0.7);
-  font-size:0.78rem;
-  text-transform:uppercase;
-  letter-spacing:0.12em;
-  color:#e5e7eb;
-  background:rgba(15,23,42,0.65);
-}
-
 .hero-image-wrapper{
   position:relative;
 }
 .hero-image{
   border-radius:1.5rem;
-  box-shadow:0 20px 55px rgba(0,0,0,0.7);
+  box-shadow:0 25px 60px rgba(0,0,0,0.5);
   object-fit:cover;
+  animation:fade-in 0.8s ease forwards;
+  opacity:0;
+}
+@keyframes fade-in{
+  to{opacity:1;}
 }
 
-/* Osiot */
+/* ============================================
+   Osiot - Text reveal animaatio
+   ============================================ */
 .section-header{
   text-align:left;
-  margin-bottom:2.3rem;
+  margin-bottom:2.5rem;
   position:relative;
   padding-left:1rem;
+  opacity:0;
+  transform:translateY(20px);
+  transition:all 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+.section-header.is-visible{
+  opacity:1;
+  transform:translateY(0);
 }
 .section-header::before{
   content:"";
@@ -210,56 +328,94 @@ section{scroll-margin-top:5rem;}
   height:1.7rem;
   border-radius:999px;
   background:linear-gradient(180deg,#38bdf8,#2563eb);
+  box-shadow:0 0 10px rgba(56,189,248,0.3);
 }
 .section-header h2{
-  font-size:1.7rem;
+  font-size:1.8rem;
   margin-bottom:0.6rem;
-  color:#e5e7eb;
+  font-weight:600;
 }
-.section-light .section-header h2{color:#e5e7eb;}
+.section-light .section-header h2{color:#f9fafb;}
 .section-header p{
-  color:#9ca3af;
+  color:#94a3b8;
   max-width:44rem;
 }
-.section-accent .section-header p{color:#cbd5f5;}
+.section-accent .section-header p{color:#cbd5e1;}
 
 /* Gridit */
 .grid{display:grid;gap:1.5rem;}
 .services-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
 .industries-grid{grid-template-columns:repeat(4,minmax(0,1fr));}
 
-/* Kortit – modernit hover-efektit */
+/* ============================================
+   Kortit - Glassmorphism + Hover-glow
+   ============================================ */
 .card{
-  background:radial-gradient(circle at top left,#111827,#020617);
+  background:rgba(15,23,42,0.6);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
   border-radius:1.2rem;
-  padding:1.6rem;
-  box-shadow:0 14px 36px rgba(15,23,42,0.55);
-  border:1px solid rgba(148,163,184,0.4);
-  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease,background .2s ease;
+  padding:1.8rem;
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
 }
 .card h3{
-  font-size:1.1rem;
-  margin-bottom:0.7rem;
+  font-size:1.15rem;
+  margin-bottom:0.8rem;
   color:#f9fafb;
+  font-weight:500;
 }
 .card p{
   font-size:0.95rem;
-  color:#d1d5db;
+  color:#94a3b8;
+  line-height:1.7;
 }
 .card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 20px 55px rgba(15,23,42,0.9);
-  border-color:#bfdbfe;
-  background:radial-gradient(circle at top left,#111827,#020617);
+  transform:translateY(-8px);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(56,189,248,0.1),
+    0 0 30px rgba(56,189,248,0.1);
+  border-color:rgba(56,189,248,0.2);
+  background:rgba(15,23,42,0.7);
 }
 .section-accent .card{
-  background:radial-gradient(circle at top,#020617,#020617);
-  border-color:rgba(148,163,184,0.5);
-  box-shadow:0 18px 45px rgba(15,23,42,0.95);
+  background:rgba(2,6,23,0.6);
+  border-color:rgba(148,163,184,0.1);
 }
 .industry-card h3{margin-bottom:0.5rem;}
 
-/* Meistä / about */
+/* ============================================
+   SCROLL REVEAL - Elementit aukeaa skrollatessa
+   ============================================ */
+.scroll-reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+.scroll-reveal.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+.scroll-reveal:nth-child(1){transition-delay:0ms;}
+.scroll-reveal:nth-child(2){transition-delay:100ms;}
+.scroll-reveal:nth-child(3){transition-delay:200ms;}
+.scroll-reveal:nth-child(4){transition-delay:300ms;}
+
+@media (prefers-reduced-motion:reduce){
+  .scroll-reveal{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+}
+
+/* ============================================
+   Meistä / about
+   ============================================ */
 .about-grid{
   display:grid;
   grid-template-columns:1.3fr 1fr;
@@ -268,65 +424,98 @@ section{scroll-margin-top:5rem;}
 }
 .about-text p{
   margin-bottom:0.75rem;
-  color:#d1d5db;
+  color:#94a3b8;
+  line-height:1.8;
 }
 .benefits-list{
-  margin-top:0.8rem;
+  margin-top:1rem;
   display:grid;
-  gap:0.45rem;
+  gap:0.6rem;
   font-size:0.95rem;
   padding-left:1rem;
 }
+.benefits-list li{
+  color:#cbd5e1;
+  position:relative;
+  padding-left:1.5rem;
+}
 .benefits-list li::before{
-  content:"•";
+  content:"→";
   color:#38bdf8;
+  position:absolute;
+  left:0;
   font-weight:bold;
-  display:inline-block;
-  width:1rem;
-  margin-left:-1rem;
 }
 .about-image{
   border-radius:1.5rem;
-  box-shadow:0 18px 45px rgba(0,0,0,0.75);
+  box-shadow:0 25px 60px rgba(0,0,0,0.4);
   object-fit:cover;
+  border:1px solid rgba(255,255,255,0.05);
 }
 
-/* Yhteys / lomake */
+/* ============================================
+   Yhteys / lomake - Floating labels + Glow
+   ============================================ */
 .contact-grid{
   display:grid;
   grid-template-columns:1.1fr 1fr;
   gap:2rem;
   align-items:flex-start;
 }
-.contact-info p{margin-bottom:0.8rem;font-size:0.96rem;color:#e5e7eb;}
-.contact-highlight a{color:#7dd3fc;}
-.contact-form-wrapper{
-  background:radial-gradient(circle at top left,#020617,#020617);
-  border-radius:1.4rem;
-  padding:1.6rem;
-  box-shadow:0 22px 55px rgba(15,23,42,1);
-  border:1px solid rgba(148,163,184,0.55);
+.contact-info p{
+  margin-bottom:0.8rem;
+  font-size:0.96rem;
+  color:#cbd5e1;
 }
-.contact-form label{display:block;font-size:0.9rem;margin-bottom:0.3rem;color:#e5e7eb;}
-.form-group{margin-bottom:1rem;}
+.contact-highlight a{
+  color:#38bdf8;
+  transition:all 0.3s ease;
+}
+.contact-highlight a:hover{
+  color:#7dd3fc;
+  text-shadow:0 0 10px rgba(56,189,248,0.3);
+}
+.contact-form-wrapper{
+  background:rgba(15,23,42,0.6);
+  backdrop-filter:blur(12px);
+  border-radius:1.4rem;
+  padding:2rem;
+  box-shadow:0 20px 50px rgba(0,0,0,0.4);
+  border:1px solid rgba(255,255,255,0.08);
+}
+.contact-form label{
+  display:block;
+  font-size:0.85rem;
+  margin-bottom:0.4rem;
+  color:#94a3b8;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+.form-group{margin-bottom:1.2rem;}
 .contact-form input,
 .contact-form select,
 .contact-form textarea{
   width:100%;
-  padding:0.6rem 0.8rem;
+  padding:0.8rem 1rem;
   border-radius:0.75rem;
-  border:1px solid #4b5563;
-  background:#020617;
+  border:1px solid rgba(148,163,184,0.2);
+  background:rgba(2,6,23,0.5);
   color:#f9fafb;
   font-size:0.95rem;
+  transition:all 0.3s ease;
 }
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus{
   outline:none;
-  border-color:#60a5fa;
-  box-shadow:0 0 0 1px #60a5fa;
+  border-color:#38bdf8;
+  box-shadow:
+    0 0 0 3px rgba(56,189,248,0.1),
+    0 0 20px rgba(56,189,248,0.1);
+  transform:translateY(-1px);
+  background:rgba(2,6,23,0.7);
 }
+.required{color:#f87171;}
 .form-message{
   margin-top:0.6rem;
   font-size:0.9rem;
@@ -335,33 +524,44 @@ section{scroll-margin-top:5rem;}
 .form-message.error{color:#fecaca;}
 .form-message.success{color:#bbf7d0;}
 
-/* Footer */
+/* ============================================
+   Footer
+   ============================================ */
 .site-footer{
-  background:#020617;
-  color:#9ca3af;
+  background:rgba(2,6,23,0.8);
+  backdrop-filter:blur(10px);
+  color:#94a3b8;
   margin-top:4rem;
-  border-top:1px solid #111827;
+  border-top:1px solid rgba(148,163,184,0.1);
 }
 .footer-grid{
   display:grid;
   grid-template-columns:2fr 1fr 1.2fr;
   gap:2rem;
-  padding:2.5rem 1.5rem 1.5rem;
+  padding:3rem 1.5rem 2rem;
 }
 .footer-col h3,
 .footer-col h4{
-  color:#e5e7eb;
-  margin-bottom:0.7rem;
+  color:#f9fafb;
+  margin-bottom:0.8rem;
   font-size:1rem;
+  font-weight:500;
 }
-.footer-col p{font-size:0.9rem;}
-.footer-links li{margin-bottom:0.35rem;}
+.footer-col p{font-size:0.9rem;line-height:1.7;}
+.footer-links li{margin-bottom:0.4rem;}
 .footer-links a{
   font-size:0.9rem;
-  color:#d1d5db;
+  color:#94a3b8;
+  transition:all 0.3s ease;
 }
-.footer-links a:hover{color:#7dd3fc;}
-.footer-bottom{border-top:1px solid #111827;padding:0.8rem 0;}
+.footer-links a:hover{
+  color:#38bdf8;
+  padding-left:0.3rem;
+}
+.footer-bottom{
+  border-top:1px solid rgba(148,163,184,0.1);
+  padding:1rem 0;
+}
 .footer-bottom-inner{
   display:flex;
   align-items:center;
@@ -369,188 +569,292 @@ section{scroll-margin-top:5rem;}
   font-size:0.85rem;
 }
 .footer-bottom a{
-  color:#7dd3fc;
+  color:#38bdf8;
+  transition:all 0.3s ease;
 }
 .footer-bottom a:hover{
-  color:#bae6fd;
+  color:#7dd3fc;
 }
 
-/* Responsiivisuus */
-/* Tablet ja pienemmät näytöt */
-@media(max-width:1024px){
-  .hero-grid{grid-template-columns:1.15fr 1fr;gap:1.9rem;}
-  .services-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .industries-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .about-grid{grid-template-columns:1fr;gap:1.7rem;}
-  .contact-grid{grid-template-columns:1fr;gap:1.7rem;}
-}
-
-/* Mobiili */
-@media(max-width:768px){
-  .nav-container{padding:0.6rem 1rem;}
-  .nav-toggle{display:flex;}
-  .main-nav{
-    position:absolute;
-    top:3.1rem;
-    right:0;
-    left:0;
-    background:rgba(15,23,42,0.98);
-    border-top:1px solid #111827;
-    transform:translateY(-110%);
-    opacity:0;
-    pointer-events:none;
-    transition:all .2s ease;
-  }
-  .nav-menu{
-    flex-direction:column;
-    padding:0.75rem 1.5rem 1.1rem;
-    gap:0.8rem;
-  }
-  .main-nav.open{
-    transform:translateY(0);
-    opacity:1;
-    pointer-events:auto;
-  }
-
-  .hero{padding:3.2rem 0 3.2rem;}
-  .hero-grid{grid-template-columns:1fr;}
-  .hero-text h1{font-size:1.8rem;}
-  .hero-lead{font-size:0.98rem;}
-
-  .services-grid,
-  .industries-grid{grid-template-columns:1fr;}
-  .section{padding:3.3rem 0;}
-
-  .footer-grid{grid-template-columns:1fr;gap:1.4rem;}
-  .footer-bottom-inner{
-    flex-direction:column;
-    gap:0.4rem;
-    align-items:flex-start;
-  }
-}
-
-/* Pienimmät näytöt */
-@media(max-width:480px){
-  .hero-text h1{font-size:1.6rem;}
-  .btn{width:100%;justify-content:center;}
-  .hero-actions{flex-direction:column;}
-}
-
-
-/* Johto modal */
+/* ============================================
+   MODALIT - Glassmorphism + Alempaa sijaintia
+   ============================================ */
 .modal{
   position:fixed;
   inset:0;
   display:none;
   z-index:100;
+  align-items:flex-start;
+  justify-content:center;
+  padding-top:12vh;
 }
-.modal.is-open{
-  display:block;
-}
+.modal.is-open{display:flex;}
 .modal-backdrop{
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,0.62);
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(5px);
+  cursor:pointer;
 }
 .modal-panel{
   position:relative;
-  width:min(1200px, calc(100% - 2rem));
-  max-height:calc(100vh - 2rem);
+  width:min(1200px,calc(100% - 2rem));
+  max-height:calc(85vh - 2rem);
   overflow:auto;
-  margin:1rem auto;
-  border-radius:1.2rem;
-  background:rgba(18,19,22,0.96);
-  border:1px solid rgba(60,61,65,0.7);
-  box-shadow:0 22px 60px rgba(0,0,0,0.85);
+  margin:0;
+  border-radius:1.5rem;
+  background:rgba(15,23,42,0.85);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.1);
+  box-shadow:0 25px 80px rgba(0,0,0,0.6);
+  transform:translateY(0);
+  transition:transform 0.3s ease;
 }
 .modal-header{
   position:relative;
   display:flex;
   align-items:center;
-  justify-content:center; /* keskelle */
-  padding:1rem 1.2rem;
-  border-bottom:1px solid rgba(60,61,65,0.7);
+  justify-content:center;
+  padding:1.2rem 1.5rem;
+  border-bottom:1px solid rgba(255,255,255,0.08);
 }
 .modal-header h2{
-  font-size:1.6rem;
-  font-weight:700;
-  letter-spacing:0.12em;
+  font-size:1.4rem;
+  font-weight:600;
+  letter-spacing:0.1em;
   text-transform:uppercase;
-  background:linear-gradient(90deg,#38bdf8,#2563eb);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:#f9fafb;
 }
 .modal-close{
-  background:transparent;
-  border:1px solid rgba(120,122,126,0.7);
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
   color:#e5e7eb;
-  width:38px;
-  height:38px;
+  width:40px;
+  height:40px;
   border-radius:0.8rem;
   cursor:pointer;
   position:absolute;
   right:1rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.2rem;
+  transition:all 0.3s ease;
 }
 .modal-close:hover{
-  border-color:rgba(194,123,66,0.9);
+  background:rgba(56,189,248,0.1);
+  border-color:#38bdf8;
+  color:#38bdf8;
+  transform:rotate(90deg);
 }
-.modal-content{
-  padding:1.1rem 1.2rem 1.3rem;
+.modal-content{padding:1.5rem;}
+
+/* Modal logo */
+.modal-brand{
+  position:absolute;
+  left:1rem;
+}
+.modal-logo{
+  height:28px;
+  width:auto;
+  display:block;
+  opacity:0.9;
 }
 
-/* Team cards */
+/* ============================================
+   TIIMIKORTIT - Ammattimainen, yhtenäinen ilme
+   ============================================ */
+
 .team-grid{
   display:grid;
-  grid-template-columns:repeat(2, minmax(0, 1fr));
-  gap:1rem;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:2rem;
 }
+
+.team-grid.single-card{
+  grid-template-columns:1fr;
+  max-width:400px;
+  margin:0 auto;
+}
+
 .team-card{
+  display:flex;
   flex-direction:column;
+  align-items:center;
   text-align:center;
-  align-items:center
+  background:linear-gradient(
+    145deg,
+    rgba(15,23,42,0.8) 0%,
+    rgba(2,6,23,0.9) 100%
+  );
+  backdrop-filter:blur(10px);
+  border-radius:1.5rem;
+  padding:2.5rem 2rem;
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  position:relative;
+  overflow:hidden;
+  transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
 }
+
+/* Koristeellinen hehku taustalle */
+.team-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:200px;
+  height:200px;
+  background:radial-gradient(
+    circle at center,
+    rgba(56,189,248,0.1) 0%,
+    transparent 60%
+  );
+  opacity:0.5;
+  transition:opacity 0.4s ease;
+}
+
+.team-card:hover::before{
+  opacity:0.8;
+}
+
+/* Kuva - ammattimainen mustavalko */
 .team-card img{
-  width:180px;
-  height:180px;
-  margin-bottom:1rem;
-  margin:0 auto 1rem auto;
+  width:200px;
+  height:240px;              /* Hieman korkeampi kuin leveä */
+  object-fit:cover;
+  border-radius:1rem;        /* Pehmeät kulmat */
+  border:none;               /* Poista pyöreä reunus */
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(255,255,255,0.05);
+  filter:grayscale(100%) contrast(1.1);
+  transition:all 0.4s ease;
+}
+/* Hover: väri esiin + efektit */
+.team-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(56,189,248,0.15);
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(56,189,248,0.1);
+}
+
+.team-card:hover img{
+  transform:scale(1.05);
+  filter:grayscale(0%) contrast(1);
+  box-shadow:
+    0 25px 50px rgba(0,0,0,0.5),
+    0 0 30px rgba(56,189,248,0.1);
+}
+
+.team-info{
+  margin-top:1.5rem;
+  position:relative;
+  z-index:1;
 }
 
 .team-info h3{
   font-size:1.25rem;
-  margin-bottom:0.1rem;
+  margin-bottom:0.3rem;
+  color:#f9fafb;
+  font-weight:600;
+  letter-spacing:0.02em;
 }
+
 .team-role{
-  color:rgba(194,123,66,0.95);
-  font-size:0.9rem;
+  color:#38bdf8;
+  font-size:0.8rem;
   text-transform:uppercase;
-  letter-spacing:0.12em;
-  margin-bottom:0.45rem;
+  letter-spacing:0.15em;
+  margin-bottom:1rem;
+  font-weight:500;
 }
+
 .team-links{
-  color:#a0a2a6;
-  font-size:1rem;
-  text-align:center;
+  color:#94a3b8;
+  font-size:0.9rem;
+  line-height:1.8;
 }
+
 .team-links a{
-  color:#e4e5e7;
-  opacity:0.9;
+  color:#cbd5e1;
+  transition:all 0.3s ease;
+  display:inline-block;
+  position:relative;
 }
+
+.team-links a::after{
+  content:'';
+  position:absolute;
+  bottom:-2px;
+  left:0;
+  width:0;
+  height:1px;
+  background:#38bdf8;
+  transition:width 0.3s ease;
+}
+
 .team-links a:hover{
+  color:#38bdf8;
+}
+
+.team-links a:hover::after{
+  width:100%;
+}
+
+/* Peurasaari - erityiskorjaus */
+.peurasaari-img{
+  object-position:center 10% !important;
+}
+
+/* ============================================
+   YHTEYS-MODAALI (leadership-modal) - Logo keskellä
+   ============================================ */
+#leadership-modal .modal-header h2{display:none !important;}
+#leadership-modal .modal-brand{
+  position:static !important;
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  width:100% !important;
+}
+#leadership-modal .modal-logo{
+  height:55px !important;
+  margin:0 auto !important;
   opacity:1;
 }
-
-/* Modal mobiilissa */
-@media(max-width:768px){
-  .team-grid{grid-template-columns:1fr;}
-  .modal-panel{margin:0.75rem auto;}
+#leadership-modal .modal-header{
+  justify-content:center !important;
+  padding:1.8rem 3rem !important;
+}
+#leadership-modal .modal-close{
+  right:1rem !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+}
+#leadership-modal .modal-close:hover{
+  transform:translateY(-50%) rotate(90deg) !important;
 }
 
-/* Accordion-versiot piilossa desktopilla */
+/* ============================================
+   ACCORDION - Mobiili (KORJATTU: teksti näkyy kokonaan)
+   ============================================ */
 .services-accordion,
-.industries-accordion { display: none; }
+.industries-accordion{display:none;}
 
-/* Summary näyttää kortin otsikolta */
+.acc-card{
+  background:rgba(15,23,42,0.6);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:1rem;
+  overflow:hidden;
+}
+
 .acc-card summary{
   list-style:none;
   cursor:pointer;
@@ -558,443 +862,707 @@ section{scroll-margin-top:5rem;}
   align-items:center;
   justify-content:space-between;
   gap:0.75rem;
-}
-
-/* poista selaimen oma nuoli */
-.acc-card summary::-webkit-details-marker{ display:none; }
-
-/* nuoli (ilman FontAwesome-riippuvuutta) */
-.acc-card summary::after{
-  content:"▾";
-  color:#38bdf8;
-  transition:transform .2s ease;
-  font-size:1.1rem;
-}
-
-.acc-card[open] summary::after{
-  transform:rotate(180deg);
-}
-
-/* Aukeava sisältö kortin sisällä */
-.acc-card .acc-body{
-  margin-top:0.9rem;
-  padding-top:0.9rem;
-  border-top:1px solid rgba(148,163,184,0.25);
-}
-
-/* Mobiilissa: piilota vanhat kortit ja näytä uudet */
-@media (max-width:768px){
-  .services-grid{ display:none !important; }
-  .industries-grid{ display:none !important; }
-
-  .services-accordion,
-  .industries-accordion{
-    display:grid !important;
-    grid-template-columns:1fr;
-    gap:1.1rem;
-  }
-
-  /* Mobiilissa ei tarvita niin isoa paddingia kortteihin */
-  .services-accordion .card,
-  .industries-accordion .card{
-    padding:1.2rem;
-  }
-}
-
-/* FORCE: logo headerissa isoksi */
-.site-header .logo{
-  display:flex;
-  align-items:center;
-  gap:0.6rem;
-}
-
-.site-header .logo img{
-  height:56px !important;
-  width:auto !important;
-  max-width:none !important;   /* tärkeä */
-}
-
-/* FIX: mobiili-accordionin sisältö ei saa katketa */
-@media (max-width:768px){
-  .services-accordion details,
-  .industries-accordion details{
-    height:auto !important;
-    max-height:none !important;
-    overflow:visible !important;
-  }
-
-  .services-accordion .acc-body,
-  .industries-accordion .acc-body{
-    height:auto !important;
-    max-height:none !important;
-    overflow:visible !important;
-    word-break:normal;
-    overflow-wrap:anywhere;
-  }
-
-  /* jos summary oli vahingossa line-clampattu tms */
-  .acc-card summary{
-    white-space:normal !important;
-  }
-}
-
-/* Tee accordion-otsikosta saman näköinen kuin kortin H3 */
-.acc-card summary{
-  font-size:1.1rem;          /* sama kuin .card h3 */
-  margin:0;                  /* ei ylimääräisiä välejä */
+  padding:1.2rem;
+  font-weight:500;
   color:#f9fafb;
-  font-weight:700;
-  line-height:1.25;
 }
 
-/* poista selaimen default-tyyli */
-.acc-card summary::-webkit-details-marker{ display:none; }
+.acc-card summary::-webkit-details-marker{display:none;}
 
-/* Nuoli oikealle, ei sotke otsikkoa */
-.acc-card summary{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:0.75rem;
-}
-
-/* Nuolen tyyli (sama fiilis kuin sivun accent) */
 .acc-card summary::after{
   content:"▾";
   color:#38bdf8;
+  transition:transform 0.3s ease;
   font-size:1.1rem;
-  transition:transform .2s ease;
+  flex-shrink:0;
 }
 
-/* Auki = nuoli ylös */
-.acc-card[open] summary::after{
-  transform:rotate(180deg);
+.acc-card[open] summary::after{transform:rotate(180deg);}
+
+.acc-card .acc-body{
+  padding:0 1.2rem 1.2rem;
+  border-top:1px solid rgba(148,163,184,0.1);
 }
 
-/* summary ei saa näyttää nappimaiselta, vaan otsikolta */
-.acc-card summary{ padding:0; }
-.acc-card .acc-body{ margin-top:0.8rem; }
-
-/* ACCORDION: premium ulkoasu (mobiili) */
-@media (max-width:768px){
-
-  /* Poista kortin padding itse detailsiltä -> padding summaryyn ja bodyyn */
-  .services-accordion .acc-card,
-  .industries-accordion .acc-card{
-    padding:0 !important;
-  }
-
-  /* Poista selaimen oma "marker"/play-ikoni kaikissa selaimissa */
-  .services-accordion .acc-card summary,
-  .industries-accordion .acc-card summary{
-    list-style:none !important;
-  }
-  .services-accordion .acc-card summary::-webkit-details-marker,
-  .industries-accordion .acc-card summary::-webkit-details-marker{
-    display:none;
-  }
-  .services-accordion .acc-card summary::marker,
-  .industries-accordion .acc-card summary::marker{
-    content:"";
-  }
-
-  /* Summary näyttää kortin otsikolta */
-  .services-accordion .acc-card summary,
-  .industries-accordion .acc-card summary{
-    padding:1.2rem 1.2rem;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:0.9rem;
-    cursor:pointer;
-
-    font-size:1.1rem;
-    font-weight:700;
-    color:#f9fafb;
-    line-height:1.25;
-  }
-
-  /* Oma nuoli oikealle */
-  .services-accordion .acc-card summary::after,
-  .industries-accordion .acc-card summary::after{
-    content:"▾";
-    color:#38bdf8;
-    font-size:1.1rem;
-    transition:transform .2s ease;
-    flex:0 0 auto;
-  }
-
-  .services-accordion .acc-card[open] summary::after,
-  .industries-accordion .acc-card[open] summary::after{
-    transform:rotate(180deg);
-  }
-
-  /* Avautuva sisältö: sama kortti, siisti erotin */
-  .services-accordion .acc-card .acc-body,
-  .industries-accordion .acc-card .acc-body{
-    padding:0 1.2rem 1.2rem;
-  }
-
-  .services-accordion .acc-card .acc-body{
-    border-top:1px solid rgba(148,163,184,0.25);
-    margin-top:0;
-    padding-top:1rem;
-  }
-  .industries-accordion .acc-card .acc-body{
-    border-top:1px solid rgba(148,163,184,0.25);
-    margin-top:0;
-    padding-top:1rem;
-  }
+.acc-card .acc-body p{
+  color:#94a3b8;
+  line-height:1.7;
+  margin-top:1rem;
+  /* KORJAUS: Näytä koko teksti */
+  display:block;
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip;
 }
 
-/* PREMIUM mobiilivalikko */
-@media (max-width:768px){
-
-  /* Headerin sisällä pitää olla ankkuri */
-  .nav-container{ position:sticky; }
-
-  .main-nav{
-    position:absolute;
-    top:calc(100% + 10px);
-    right:12px;
-    left:auto;
-
-    width:min(320px, calc(100vw - 24px));
-    padding:10px;
-
-    border-radius:16px;
-    background:linear-gradient(180deg, rgba(15,23,42,0.92), rgba(2,6,23,0.92));
-    border:1px solid rgba(148,163,184,0.28);
-    box-shadow:0 24px 70px rgba(0,0,0,0.65);
-    backdrop-filter:blur(16px);
-
-    transform:translateY(-8px);
-    opacity:0;
-    pointer-events:none;
-    transition:opacity .18s ease, transform .18s ease;
-  }
-
-  .main-nav.open{
-    transform:translateY(0);
-    opacity:1;
-    pointer-events:auto;
-  }
-
-  .nav-menu{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-    padding:6px;
-  }
-
-  /* Linkit premium “pill” */
-  .nav-menu a{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:12px 12px;
-    border-radius:12px;
-
-    background:rgba(15,23,42,0.55);
-    border:1px solid rgba(148,163,184,0.22);
-
-    color:#e5e7eb;
-    font-weight:600;
-    opacity:1;
-
-    transition:transform .12s ease, border-color .12s ease, background .12s ease;
-  }
-
-  .nav-menu a:hover,
-  .nav-menu a:focus-visible{
-    background:rgba(37,99,235,0.18);
-    border-color:rgba(56,189,248,0.45);
-    transform:translateY(-1px);
-  }
-
-  /* Poista vanha full-width “laatta” fiilis */
-  .main-nav{
-    border-top:none;
-  }
-}
-/* PREMIUM mobiilivalikko + overlay */
+/* ============================================
+   NAV OVERLAY
+   ============================================ */
 .nav-overlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.45);
+  background:rgba(2,6,23,0.7);
+  backdrop-filter:blur(8px);
   opacity:0;
   pointer-events:none;
-  transition:opacity .18s ease;
-  z-index:40;
-}
-
-@media (max-width:768px){
-
-  /* Headerin sisällä ankkuri */
-  .nav-container{ position:sticky; z-index:50; }
-
-  /* Dropdown-kortti (ei enää full-width laatta) */
-  .main-nav{
-    position:absolute;
-    top:calc(100% + 10px);
-    right:12px;
-    left:auto;
-
-    width:min(340px, calc(100vw - 24px));
-    padding:10px;
-
-    border-radius:18px;
-    background:linear-gradient(180deg, rgba(15,23,42,0.92), rgba(2,6,23,0.92));
-    border:1px solid rgba(148,163,184,0.28);
-    box-shadow:0 24px 70px rgba(0,0,0,0.65);
-    backdrop-filter:blur(16px);
-
-    transform:translateY(-10px) scale(0.98);
-    opacity:0;
-    pointer-events:none;
-    transition:opacity .18s ease, transform .18s ease;
-    z-index:60;
-
-    /* poista vanha */
-    border-top:none;
-  }
-
-  .main-nav.open{
-    transform:translateY(0) scale(1);
-    opacity:1;
-    pointer-events:auto;
-  }
-
-  /* Overlay näkyviin kun nav auki */
-  .main-nav.open ~ .nav-overlay,
-  .nav-overlay.is-open{
-    opacity:1;
-    pointer-events:auto;
-  }
-
-  .nav-menu{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-    padding:6px;
-  }
-
-  /* Premium “pill” linkit */
-  .nav-menu a{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:12px 12px;
-    border-radius:14px;
-
-    background:rgba(15,23,42,0.55);
-    border:1px solid rgba(148,163,184,0.22);
-
-    color:#e5e7eb;
-    font-weight:650;
-    opacity:1;
-
-    transition:transform .12s ease, border-color .12s ease, background .12s ease;
-  }
-
-  .nav-menu a:hover,
-  .nav-menu a:focus-visible{
-    background:rgba(37,99,235,0.18);
-    border-color:rgba(56,189,248,0.45);
-    transform:translateY(-1px);
-  }
-
-  /* Hamburger “nappi” vähän premiumimmaksi (valinnainen) */
-  .nav-toggle{
-    padding:10px;
-    border-radius:12px;
-    border:1px solid rgba(148,163,184,0.25);
-    background:rgba(15,23,42,0.35);
-    backdrop-filter:blur(12px);
-  }
-}
-/* ===== Premium mobile menu + overlay ===== */
-.nav-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(2,6,23,0.55);
-  backdrop-filter: blur(6px);
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .2s ease;
-  z-index:45; /* alle nav-container (50) mutta yli sivun */
+  transition:opacity 0.3s ease;
+  z-index:45;
 }
 .nav-overlay.is-open{
   opacity:1;
   pointer-events:auto;
 }
 
-/* Mobiilin menu paneelina, ei "lista sivulla" */
-@media(max-width:768px){
-  /* varmista että headerissa on tilaa isommalle logolle */
-  .nav-container{
-    position:sticky;
-  }
+/* ============================================
+   RESPONSIIVISUUS
+   ============================================ */
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1.15fr 1fr;gap:1.9rem;}
+  .services-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .industries-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .about-grid{grid-template-columns:1fr;gap:1.7rem;}
+  .contact-grid{grid-template-columns:1fr;gap:1.7rem;}
+  .modal-panel{width:min(900px,90%);}
+}
 
+@media(max-width:768px){
+  .nav-container{padding:0.6rem 1rem;}
+  .nav-toggle{display:flex;}
+  
   .main-nav{
-    position:fixed;              /* tärkeä: irti layoutista */
-    top:72px;                    /* säädä jos headerin korkeus eri */
+    position:fixed;
+    top:72px;
     left:12px;
     right:12px;
     z-index:60;
     border-radius:16px;
     padding:10px 0;
-    background:linear-gradient(180deg,rgba(15,23,42,0.98),rgba(2,6,23,0.98));
-    border:1px solid rgba(148,163,184,0.25);
-    box-shadow:0 24px 70px rgba(0,0,0,0.55);
+    background:rgba(15,23,42,0.95);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(56,189,248,0.1);
+    box-shadow:0 24px 70px rgba(0,0,0,0.5);
     transform:translateY(-10px) scale(0.98);
     opacity:0;
     pointer-events:none;
-    transition:transform .2s ease, opacity .2s ease;
+    transition:all 0.3s ease;
   }
-
   .main-nav.open{
     transform:translateY(0) scale(1);
     opacity:1;
     pointer-events:auto;
   }
-
   .nav-menu{
     flex-direction:column;
     gap:0;
     padding:0;
   }
-
-  .nav-menu li + li{
-    border-top:1px solid rgba(148,163,184,0.12);
-  }
-
+  .nav-menu li + li{border-top:1px solid rgba(148,163,184,0.1);}
   .nav-menu a{
     display:flex;
     align-items:center;
     justify-content:space-between;
     padding:14px 16px;
-    border-bottom:0;
-    opacity:1;
-    font-weight:600;
+    font-weight:500;
     color:#e5e7eb;
   }
+  .nav-menu a:hover{background:rgba(56,189,248,0.05);}
 
-  /* pieni "chevron" premium-fiilikseen */
-  .nav-menu a::after{
-    content:"›";
-    opacity:0.6;
-    transform:translateY(-1px);
+  .hero{padding:6rem 0 3rem;}
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-text h1{font-size:1.9rem;}
+  .hero-lead{font-size:0.95rem;}
+
+  .services-grid,
+  .industries-grid{grid-template-columns:1fr;}
+  .section{padding:3rem 0;}
+  
+  /* Näytä accordion mobiilissa */
+  .services-grid{display:none !important;}
+  .industries-grid{display:none !important;}
+  .services-accordion,
+  .industries-accordion{
+    display:flex !important;
+    flex-direction:column;
+    gap:1rem;
+  }
+  
+  /* Accordion animaatio */
+  .acc-card[open] .acc-body{
+    animation:fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn{
+    from{opacity:0;transform:translateY(-10px);}
+    to{opacity:1;transform:translateY(0);}
   }
 
-  .nav-menu a:hover{
-    background:rgba(56,189,248,0.08);
+  .footer-grid{grid-template-columns:1fr;gap:1.4rem;}
+  .footer-bottom-inner{
+    flex-direction:column;
+    gap:0.4rem;
+    align-items:flex-start;
   }
+  
+  /* TIIMIKORTIT MOBIILISSA */
+  .team-grid{grid-template-columns:1fr;}
+  .team-card{padding:2rem 1.5rem;}
+  .team-card img{width:140px;height:140px;}
+  .team-info h3{font-size:1.15rem;}
+  
+  /* MODAALIT MOBIILISSA - KORJAUS */
+  .modal-panel{
+    width:calc(100% - 1rem);
+    margin:0.5rem;
+    max-height:95vh;
+    border-radius:1rem;
+  }
+  
+  /* Tarjouspyyntö-modaali */
+  #tarjous-modal .modal-header{
+    flex-direction:column;
+    gap:0.8rem;
+    padding:1.2rem 1rem !important;
+  }
+  
+  #tarjous-modal .modal-brand{
+    position:static !important;
+    order:-1;
+  }
+  
+  #tarjous-modal .modal-logo{
+    height:32px !important;
+    margin:0 auto;
+  }
+  
+  #tarjous-modal .modal-header h2{
+    font-size:1.2rem;
+    margin:0;
+  }
+  
+  /* Yhteys-modaali */
+  #leadership-modal .modal-header{
+    padding:1.2rem 1rem !important;
+  }
+  
+  #leadership-modal .modal-logo{
+    height:38px !important;
+  }
+  
+  /* Sulkunappi */
+  .modal-close{
+    right:0.8rem !important;
+    top:1rem !important;
+    transform:none !important;
+    width:36px;
+    height:36px;
+  }
+  
+  #leadership-modal .modal-close,
+  #tarjous-modal .modal-close{
+    top:1rem !important;
+    transform:none !important;
+  }
+}
 
-  /* hamburgerin paikka/tyyli pysyy */
-  .nav-toggle{
+@media(max-width:480px){
+  .hero-text h1{font-size:1.6rem;}
+  .btn{width:100%;justify-content:center;}
+  .hero-actions{flex-direction:column;}
+  .card{padding:1.4rem;}
+  
+  #tarjous-modal .modal-header h2{font-size:1.1rem;}
+  #tarjous-modal .modal-logo{height:28px !important;}
+  #leadership-modal .modal-logo{height:32px !important;}
+}
+
+/* ============================================
+   LOGO FIX
+   ============================================ */
+.site-header .logo{
+  display:flex;
+  align-items:center;
+  gap:0.6rem;
+}
+.site-header .logo img{
+  height:56px !important;
+  width:auto !important;
+  max-width:none !important;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible{
+  outline:2px solid #38bdf8;
+  outline-offset:2px;
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+@media (prefers-contrast:high){
+  .card{border-width:2px;}
+}
+
+/* ============================================
+   AJANKOHTAISTA - Moderni, tyylikäs design
+   ============================================ */
+
+#ajankohtaista .section-header{
+  text-align:center;
+  padding-left:0;
+  margin-bottom:3rem;
+}
+
+#ajankohtaista .section-header::before{display:none;}
+
+#ajankohtaista .section-header h2{
+  font-size:2rem;
+  font-weight:300;
+  letter-spacing:0.05em;
+  position:relative;
+  display:inline-block;
+  padding-bottom:1rem;
+}
+
+#ajankohtaista .section-header h2::after{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:60px;
+  height:2px;
+  background:linear-gradient(90deg,transparent,#38bdf8,transparent);
+}
+
+#ajankohtaista .news-grid{
+  max-width:700px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
+}
+
+#ajankohtaista .news-card{
+  background:linear-gradient(145deg,rgba(17,24,39,0.7),rgba(2,6,23,0.8));
+  border:1px solid rgba(56,189,248,0.08);
+  border-radius:1rem;
+  padding:2rem 2.5rem;
+  text-align:left;
+  position:relative;
+  overflow:hidden;
+  transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+#ajankohtaista .news-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:3px;
+  height:100%;
+  background:linear-gradient(180deg,#38bdf8,transparent);
+  opacity:0;
+  transition:opacity 0.3s ease;
+}
+
+#ajankohtaista .news-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.3),0 0 0 1px rgba(56,189,248,0.1);
+  border-color:rgba(56,189,248,0.15);
+}
+
+#ajankohtaista .news-card:hover::before{opacity:1;}
+
+#ajankohtaista .news-date{
+  display:inline-block;
+  background:transparent;
+  color:#38bdf8;
+  font-size:0.75rem;
+  font-weight:600;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  padding:0;
+  margin-bottom:0.75rem;
+}
+
+#ajankohtaista .news-card h3{
+  font-size:1.25rem;
+  font-weight:500;
+  color:#f9fafb;
+  margin-bottom:0.8rem;
+  line-height:1.4;
+}
+
+#ajankohtaista .news-card p{
+  color:#94a3b8;
+  font-size:0.95rem;
+  line-height:1.7;
+  margin:0;
+}
+
+#ajankohtaista .news-card strong{
+  color:#38bdf8;
+  font-weight:600;
+}
+
+@media(max-width:768px){
+  #ajankohtaista .section-header h2{font-size:1.6rem;}
+  #ajankohtaista .news-grid{padding:0 1rem;}
+  #ajankohtaista .news-card{padding:1.5rem;}
+}
+
+/* ============================================
+   LEADERSHIP - Yhteystietojen alla
+   ============================================ */
+.leadership-section{
+  margin-top:4rem;
+  padding-top:3rem;
+  border-top:1px solid rgba(148,163,184,0.1);
+}
+.leadership-section .team-grid{
+  grid-template-columns:repeat(4,1fr);
+  gap:1.5rem;
+}
+.leadership-section .team-card{padding:1.5rem;}
+.leadership-section .team-card img{
+  width:140px;
+  height:140px;
+}
+
+/* ============================================
+   YHTEISTYÖKUMPPANI
+   ============================================ */
+.partner-link{
+  margin-top:2rem;
+  padding-top:2rem;
+  border-top:1px solid rgba(148,163,184,0.1);
+}
+.partner-link h4{
+  color:#f9fafb;
+  margin-bottom:1rem;
+  font-size:1rem;
+}
+.partner-footer{
+  margin-top:1rem;
+  font-size:0.9rem;
+}
+.partner-footer a{
+  color:#38bdf8;
+  transition:all 0.3s ease;
+}
+.partner-footer a:hover{
+  color:#7dd3fc;
+}
+
+/* ============================================
+   YHTEYS - Napit modaaleille
+   ============================================ */
+.contact-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.75rem;
+  margin-top:1.5rem;
+}
+.contact-buttons .btn{
+  padding:0.7rem 1.4rem;
+  font-size:0.9rem;
+}
+
+/* ============================================
+   KOSKEN ASENNUS - Pääyhtiö
+   ============================================ */
+.partner-section{
+  padding:2rem 1.5rem;
+  border-top:1px solid rgba(148,163,184,0.08);
+  margin-top:1rem;
+}
+.partner-box{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:1rem;
+  padding:1.5rem;
+  background:rgba(15,23,42,0.5);
+  backdrop-filter:blur(10px);
+  border-radius:1.2rem;
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 8px 32px rgba(0,0,0,0.2);
+}
+.partner-box p{
+  color:#94a3b8;
+  font-size:0.95rem;
+  margin:0;
+}
+.partner-box strong{color:#f9fafb;}
+.partner-box .btn{
+  padding:0.7rem 1.5rem;
+  font-size:0.9rem;
+}
+
+/* ============================================
+   MOBIILI - Leadership
+   ============================================ */
+@media(max-width:1024px){
+  .leadership-section .team-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:768px){
+  .leadership-section .team-grid{grid-template-columns:1fr;}
+  .leadership-section .team-card img{width:160px;height:160px;}
+}
+
+/* Print styles */
+@media print{
+  .site-header,
+  .nav-toggle,
+  .hero-actions,
+  .modal,
+  .nav-overlay{display:none !important;}
+  body{
+    font-size:12pt;
+    line-height:1.5;
+    color:#000;
+    background:#fff;
+  }
+  .section{padding:1rem 0;page-break-inside:avoid;}
+  .card{
+    box-shadow:none;
+    border:1px solid #ccc;
+    background:#fff;
+  }
+  a{text-decoration:underline;color:#000;}
+}
+/* ============================================
+   ACCORDION TEKSTI - PAKOTETTU NÄKYVIIN
+   ============================================ */
+
+.acc-card .acc-body,
+.acc-card .acc-body p,
+.acc-card .acc-body * {
+  display: block !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  max-height: none !important;
+  height: auto !important;
+}
+
+/* Poista mahdolliset ellipsis rajoitukset */
+.acc-card summary,
+.acc-card .acc-body p {
+  text-overflow: clip !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+}
+
+/* Näytä koko teksti avattaessa */
+.acc-card[open] .acc-body {
+  max-height: 1000px !important;
+  height: auto !important;
+}
+
+.acc-card[open] .acc-body p {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ============================================
+   HIGHLIGHT-TEXT - Gradient-animaatio mobiilissa
+   ============================================ */
+
+.highlight-text{
+  display:none;  /* Piilota oletuksena */
+}
+
+@media(max-width:768px){
+  .highlight-text{
+    display:block;
+    text-align:center;
+    margin:2.5rem 0;        /* Tilaa ylä- ja alapuolelle */
+    font-size:0.85rem;
+    font-weight:600;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    background:linear-gradient(90deg,#38bdf8,#2563eb,#7dd3fc,#38bdf8);
+    background-size:300% 100%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    animation:gradient-flow 4s ease infinite;
+  }
+  
+  @keyframes gradient-flow{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+}
+/* ============================================
+   SECTION-DIVIDER - Kompakti ja tyylikäs
+   ============================================ */
+
+.section-divider{
+  display:none;
+}
+
+@media(max-width:768px){
+  .section-divider{
     display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:2rem 0 1.5rem;    /* Pieni marginaali ylhäällä, vielä pienempi alhaalla */
+    position:relative;
+  }
+  
+  /* Lyhyt viiva */
+  .section-divider::before{
+    content:'';
+    width:40px;
+    height:1px;
+    background:linear-gradient(90deg,transparent,#38bdf8,transparent);
+    opacity:0.6;
+  }
+  
+  /* Piste keskellä */
+  .section-divider::after{
+    content:'';
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:#38bdf8;
+    border-radius:50%;
+    box-shadow:0 0 10px rgba(56,189,248,0.5);
+    animation:pulse-dot 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-dot{
+    0%,100%{transform:scale(1);opacity:0.6;}
+    50%{transform:scale(1.3);opacity:1;}
+  }
+}
+/* ============================================
+   ACCORDION - Premium ilme kuvakkeilla
+   ============================================ */
+
+@media(max-width:768px){
+  .acc-card{
+    background:linear-gradient(145deg,rgba(15,23,42,0.8),rgba(2,6,23,0.9));
+    border:1px solid rgba(56,189,248,0.1);
+    border-radius:1rem;
+    margin-bottom:0.75rem;
+    overflow:hidden;
+    position:relative;
+    transition:all 0.3s ease;
+  }
+  
+  /* Hehku reunalle hoverissa */
+  .acc-card:hover{
+    border-color:rgba(56,189,248,0.3);
+    box-shadow:0 8px 32px rgba(0,0,0,0.3),0 0 0 1px rgba(56,189,248,0.1);
+    transform:translateX(4px);
+  }
+  
+  /* Summary - otsikkoalue */
+  .acc-card summary{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    padding:1.2rem 1.5rem;
+    cursor:pointer;
+    position:relative;
+  }
+  
+  /* Ikoni container */
+  .acc-icon{
+    width:44px;
+    height:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,rgba(56,189,248,0.1),rgba(37,99,235,0.1));
+    border:1px solid rgba(56,189,248,0.2);
+    border-radius:0.75rem;
+    font-size:1.3rem;
+    flex-shrink:0;
+    transition:all 0.3s ease;
+  }
+  
+  /* Ikoni itse */
+  .acc-icon svg,
+  .acc-icon i{
+    width:24px;
+    height:24px;
+    color:#38bdf8;
+    filter:drop-shadow(0 0 8px rgba(56,189,248,0.4));
+  }
+  
+  /* Teksti */
+  .acc-title{
+    flex:1;
+    font-size:0.95rem;
+    font-weight:500;
+    color:#f9fafb;
+    letter-spacing:0.02em;
+  }
+  
+  /* Nuoli */
+  .acc-arrow{
+    width:24px;
+    height:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#38bdf8;
+    transition:transform 0.3s ease;
+  }
+  
+  /* Avattu tila */
+  .acc-card[open] .acc-icon{
+    background:linear-gradient(135deg,#2563eb,#38bdf8);
+    border-color:transparent;
+  }
+  
+  .acc-card[open] .acc-icon svg,
+  .acc-card[open] .acc-icon i{
+    color:#0b1120;
+    filter:none;
+  }
+  
+  .acc-card[open] .acc-arrow{
+    transform:rotate(180deg);
+  }
+  
+  /* Sisältö */
+  .acc-body{
+    padding:0 1.5rem 1.5rem 4.4rem;  /* Vasen padding ikonin kohdalle */
+    border-top:1px solid rgba(56,189,248,0.05);
+  }
+  
+  .acc-body p{
+    color:#94a3b8;
+    font-size:0.9rem;
+    line-height:1.7;
+    margin:0;
+  }
+  
+  /* Korostus avatessa */
+  .acc-card[open]{
+    background:linear-gradient(145deg,rgba(15,23,42,0.9),rgba(2,6,23,0.95));
+    border-color:rgba(56,189,248,0.2);
   }
 }
