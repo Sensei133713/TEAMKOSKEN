@@ -322,6 +322,8 @@
 
 
   </div>
+    <!-- Logo esittelyosion lopussa -->
+
 
     <!-- Meistä -->
     <section id="meista" class="section section-light">
@@ -408,8 +410,7 @@
             Jätä viesti yhteydenottolomakkeella tai ota yhteyttä suoraan sähköpostitse.
           </p>
           <p class="contact-highlight">
-            Sähköposti: <a href="mailto:info@teamkosken.fi">info@teamkosken.fi</a><br>
-            Puhelin: <a href="tel:+358401234567">+358 40 123 4567</a>
+
           </p>
           <p>
             Vastaamme mahdollisimman pian ja käymme läpi yhdessä, miten voimme tukea teidän tuotantoanne, projektejanne ja kunnossapidon suunnittelua.
@@ -423,7 +424,7 @@
         </div>
 
         <div class="contact-form-wrapper scroll-reveal">
-          <form id="contact-form" class="contact-form" action="mailto:info@teamkosken.fi" method="post" novalidate>
+          <form id="contact-form" class="contact-form" action="https://formspree.io/f/xjgezvdy" method="POST">
             <div class="form-group">
               <label for="name">Nimi <span class="required">*</span></label>
               <input type="text" id="name" name="name" required placeholder="Etunimi Sukunimi" autocomplete="name">
@@ -453,6 +454,8 @@
               <label for="message">Viesti <span class="required">*</span></label>
               <textarea id="message" name="message" rows="4" required placeholder="Kerro lyhyesti tarpeestasi, aikataulusta ja toimialasta."></textarea>
             </div>
+            <input type="text" name="_gotcha" style="display:none">
+            <input type="hidden" name="_next" value="https://www.teamkosken.fi/#yhteys">
             <button type="submit" class="btn btn-primary full-width">Lähetä viesti</button>
             <p id="form-message" class="form-message" aria-live="polite"></p>
           </form>
@@ -482,18 +485,14 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Yhteystiedot</h4>
-        <p>
-          Sähköposti: <a href="mailto:info@teamkosken.fi">info@teamkosken.fi</a><br>
-          Puhelin: <a href="tel:+358401234567">+358 40 123 4567</a>
-        </p>
+
       </div>
     </div>
     
     <!-- Kosken Asennus - pääyhtiö -->
     <div class="container partner-section">
       <div class="partner-box">
-        <p>Team Kosken on <strong>Kosken Asennus Oy:n</strong> tytäryhtiö</p>
+        <p>Team Kosken on <strong>Kosken Asennus Oy:n</strong> kumppani</p>
         <a href="https://www.koskenasennus.fi" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
           Siirry Kosken Asennuksen sivuille
         </a>

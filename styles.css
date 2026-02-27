@@ -280,7 +280,7 @@ section{scroll-margin-top:5rem;}
 }
 .hero-text p{
   margin-bottom:0.7rem;
-  color:#94a3b8;
+  color:#98999b;
   max-width:36rem;
 }
 .hero-actions{
@@ -370,7 +370,7 @@ section{scroll-margin-top:5rem;}
 }
 .card p{
   font-size:0.95rem;
-  color:#94a3b8;
+  color:#cbd1da;
   line-height:1.7;
 }
 .card:hover{
@@ -414,45 +414,58 @@ section{scroll-margin-top:5rem;}
 }
 
 /* ============================================
-   Meistä / about
+   Meistä / about - KORJATTU
    ============================================ */
+/*
+.about-section{
+  padding:2rem 0 3rem;
+}
+
 .about-grid{
   display:grid;
   grid-template-columns:1.3fr 1fr;
   gap:2.2rem;
-  align-items:center;
+  align-items:start !important;
 }
+
+
+.about-text{
+  align-self:start !important;
+}
+
 .about-text p{
-  margin-bottom:0.75rem;
-  color:#94a3b8;
+  margin-bottom:1rem;
+  color:#f7f8f8 !important;
   line-height:1.8;
+  font-size:1.05rem;
 }
-.benefits-list{
-  margin-top:1rem;
-  display:grid;
-  gap:0.6rem;
-  font-size:0.95rem;
+
+
+.about-text p:first-child{
+  margin-top:0 !important;
+  font-size:1.2rem;
+  color:#ffffff !important;
+  font-weight:400;
   padding-left:1rem;
+  border-left:3px solid #38bdf8;
+  text-shadow:0 2px 8px rgba(0,0,0,0.3);
 }
-.benefits-list li{
-  color:#cbd5e1;
-  position:relative;
-  padding-left:1.5rem;
+
+
+.about-image-wrapper{
+  align-self:start !important;
 }
-.benefits-list li::before{
-  content:"→";
-  color:#38bdf8;
-  position:absolute;
-  left:0;
-  font-weight:bold;
-}
+
 .about-image{
-  border-radius:1.5rem;
+  width:100%;
+  height:auto;
+  border-radius:1.5rem !important;
   box-shadow:0 25px 60px rgba(0,0,0,0.4);
   object-fit:cover;
   border:1px solid rgba(255,255,255,0.05);
-}
-
+  display:block;
+} VANHA VERSIO TEKSTI JA KUVA EPÄTASAPAINOSSA
+*/
 /* ============================================
    Yhteys / lomake - Floating labels + Glow
    ============================================ */
@@ -1607,4 +1620,474 @@ select:focus-visible{
   font-size:0.95rem;
   color:#94a3b8;
   line-height:1.7;
+}
+/* ============================================
+   ABOUT-OSIO - TASAPAINOTETTU ASETTELU
+   ============================================ */
+
+.about-section{
+  padding:0 0 2rem !important;  /* Poista yläpadding, pienempi alapadding */
+  margin-top:-6rem;              /* Nosta ylemmäs (negatiivinen marginaali) */
+  position:relative;
+}
+
+/* Hienovarainen yläreuna */
+.about-section::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:60px;
+  height:2px;
+  background:linear-gradient(90deg,transparent,#38bdf8,transparent);
+  opacity:0.5;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:2.2rem;
+  align-items:center;     /* Keskitä molemmat pystysuunnassa */
+}
+
+/* Teksti wrapper - lisää tyhjää ylhäälle */
+.about-text{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding-top:-2rem;       /* Nosta tekstiä alemmas */
+  margin-top:-4rem !important;
+}
+
+.about-text p{
+  margin-bottom:0.8rem;   /* Pienempi väli kappaleiden välillä */
+  color:#cbd5e1;
+  line-height:1.7;
+}
+
+.about-text p:first-child{
+  margin-top:0;
+  font-size:1.05rem;
+  color:#e5e7eb;
+}
+
+/* Kuva wrapper - pienempi ja keskitetty */
+.about-image-wrapper{
+  position:relative;
+  aspect-ratio:4/3;       /* Kiinteä mittasuhde */
+  max-height:320px;       /* Pienempi korkeus */
+  width:100%;
+  border-radius:1rem;     /* Pienempi pyöristys */
+  overflow:hidden;
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+  border:1px solid rgba(255,255,255,0.05);
+  align-self:center;      /* Keskitä pystysuunnassa */
+  margin-top:2rem;        /* Nosta kuvaa alemmas tekstin tasolle */
+}
+
+.about-image{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transition:transform 0.6s ease;
+}
+
+.about-image-wrapper:hover .about-image{
+  transform:scale(1.03);
+}
+
+/* Responsiivisuus */
+@media(max-width:768px){
+  .about-section{
+    margin-top:0;         /* Poista negatiivinen marginaali mobiilissa */
+    padding:1rem 0 !important;
+  }
+  
+  .about-grid{
+    grid-template-columns:1fr;
+    gap:1.5rem;
+  }
+  
+  .about-text{
+    padding-top:0;
+  }
+  
+  .about-image-wrapper{
+    max-height:250px;
+    margin-top:0;
+    order:-1;
+  }
+}
+/* ============================================
+   TARJOUSPYYNTÖ-MODAALI - Kavennettu PC:ssä
+   ============================================ */
+
+/* PC-näkymä - kavennettu modaali */
+@media (min-width: 769px) {
+  #tarjous-modal .modal-panel {
+    width: min(600px, calc(100% - 2rem)) !important;  /* Kavenna 600px */
+    max-width: 600px !important;
+  }
+  
+  #tarjous-modal .team-grid.single-card {
+    max-width: 350px !important;  /* Kavenna korttialuetta */
+  }
+  
+  #tarjous-modal .team-card {
+    padding: 2rem !important;  /* Pienennä paddingia */
+  }
+  
+  #tarjous-modal .team-card img {
+    width: 160px !important;  /* Pienennä kuvaa */
+    height: 200px !important;
+  }
+}
+
+/* Mobiili - säilytä täysleveys */
+@media (max-width: 768px) {
+  #tarjous-modal .modal-panel {
+    width: calc(100% - 1rem) !important;
+    margin: 0.5rem !important;
+  }
+}
+/* ============================================
+   MOBIILI-HERO - Moderni, kompakti tyyli
+   ============================================ */
+
+@media(max-width:768px){
+  .hero{
+    padding:5rem 0 2.5rem;
+    min-height:auto;  /* Poista kiinteä korkeus */
+  }
+  
+  /* Otsikko: selkeä mutta ei dominoiva */
+  .hero-text h1{
+    font-size:1.5rem;      /* Sopivan kokoinen */
+    line-height:1.2;
+    font-weight:600;       /* Hieman kevyempi */
+    margin-bottom:1rem;
+    letter-spacing:-0.02em; /* Moderni tiivis tracking */
+  }
+  
+  /* Lead-teksti: avainviesti */
+  .hero-lead{
+    font-size:0.95rem;
+    line-height:1.5;
+    color:#e2e8f0;
+    margin-bottom:0;
+  }
+  
+  /* Toissijainen teksti: kompaktimpi */
+  .hero-text > p:not(.hero-lead){
+    font-size:0.85rem;
+    line-height:1.5;
+    color:#94a3b8;         /* Vaaleampi = vähemmän tärkeä */
+    margin-top:0.75rem;
+    margin-bottom:0;
+  }
+  
+  /* Visuaalinen erotin ennen nappeja */
+  .hero-actions{
+    margin-top:1.25rem;
+    padding-top:1.25rem;
+    border-top:1px solid rgba(56,189,248,0.15);  /* Hienovarainen viiva */
+    gap:0.6rem;
+  }
+  
+  .hero-actions .btn{
+    padding:0.75rem 1.4rem;
+    font-size:0.85rem;
+  }
+}
+/* ============================================
+   MOBIILI-HERO - Parempi kontrasti ja värit
+   ============================================ */
+
+@media(max-width:768px){
+  /* Otsikko: puhtaan valkoinen */
+  .hero-text h1{
+    font-size:1.5rem;
+    line-height:1.2;
+    font-weight:600;
+    margin-bottom:1rem;
+    color:#ffffff;           /* Puhdas valkoinen */
+    text-shadow:0 2px 10px rgba(0,0,0,0.3);
+  }
+  
+  /* Ensimmäinen kappale: kirkas harmaa */
+  .hero-lead{
+    font-size:1rem;          /* Hieman isompi */
+    line-height:1.6;         /* Lisää riviväliä */
+    color:#f1f5f9;           /* Vaaleanharmaa, hyvä kontrasti */
+    font-weight:400;
+    margin-bottom:0;
+  }
+  
+  /* Toinen kappale: selkeästi erottuva */
+  .hero-text > p:not(.hero-lead){
+    font-size:0.9rem;        /* Isompi kuin aiemmin */
+    line-height:1.6;
+    color:#cbd5e1;           /* Kirkkaampi harmaa */
+    margin-top:0.75rem;
+    margin-bottom:0;
+  }
+  
+  /* Korosta avainsanat */
+  .hero-text strong{
+    color:#38bdf8;           /* Sininen korostus */
+    font-weight:500;
+  }
+  
+  /* Viiva ennen nappeja */
+  .hero-actions{
+    margin-top:1.25rem;
+    padding-top:1.25rem;
+    border-top:1px solid rgba(56,189,248,0.2);
+    gap:0.6rem;
+  }
+}
+@media(max-width:768px){
+  .services-accordion{
+    gap:0.4rem;
+  }
+  
+  .acc-card{
+    background:rgba(255,255,255,0.03);
+    border:none;
+    border-radius:0.6rem;
+    backdrop-filter:blur(20px);
+  }
+  
+  .acc-card:hover{
+    background:rgba(255,255,255,0.06);
+  }
+  
+  .acc-card[open]{
+    background:rgba(56,189,248,0.08);
+  }
+  
+  .acc-card summary{
+    padding:0.85rem 1rem;
+    font-size:0.88rem;
+    font-weight:400;
+    color:#ffffff;
+  }
+  
+  .acc-card summary::after{
+    content:'›';
+    font-size:1.3rem;
+    color:#64748b;
+    transform:none;
+  }
+  
+  .acc-card[open] summary::after{
+    color:#38bdf8;
+    transform:rotate(90deg);
+  }
+  
+  .acc-body p{
+    font-size:0.8rem;
+    color:#cbd5e1;
+  }
+}
+/* ============================================
+   YHTEYS-OSIO - Nosta ylemmäs
+   ============================================ */
+
+@media(max-width:768px){
+  #yhteys{
+    padding:1.5rem 0 2rem !important;
+    margin-top:-2rem !important;  /* Nosta ylemmäs */
+    position:relative;
+    z-index:1;
+  }
+  
+  #yhteys .container{
+    padding-top:0 !important;
+  }
+  
+  #yhteys .section-header{
+    margin-bottom:0.75rem;
+    padding-top:0 !important;
+  }
+  
+  #yhteys .section-header h2{
+    font-size:1.4rem;
+    margin-bottom:0.5rem;
+  }
+  
+  /* Tämä teksti: "Haluatko lisätietoja..." */
+  #yhteys .contact-info > p:first-of-type{
+    margin-top:0 !important;
+    margin-bottom:0.5rem !important;
+    font-size:0.9rem;
+    line-height:1.5;
+    color:#e2e8f0;
+  }
+  
+  /* Muut kappaleet */
+  #yhteys .contact-info p{
+    margin-bottom:0.5rem;
+    font-size:0.85rem;
+    color:#94a3b8;
+  }
+  
+  /* Napit */
+  #yhteys .contact-buttons{
+    margin-top:1rem;
+    margin-bottom:0;
+  }
+}
+/* ============================================
+   FOOTER - Moderni mobiilityyli
+   ============================================ */
+
+@media(max-width:768px){
+  .site-footer{
+    padding:2rem 0 0;
+  }
+  
+  .footer-grid{
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+    padding:0 1rem 1.5rem;
+  }
+  
+  /* Team Kosken - kuvaus */
+  .footer-col:first-child{
+    text-align:center;
+    order:2;  /* Siirrä alimmaksi */
+  }
+  
+  .footer-col:first-child h3{
+    font-size:1.1rem;
+    margin-bottom:0.5rem;
+    color:#f8fafc;
+  }
+  
+  .footer-col:first-child p{
+    font-size:0.85rem;
+    color:#94a3b8;
+    line-height:1.5;
+  }
+  
+  /* Pikalinkit - vaakasuoraan */
+  .footer-col:nth-child(2){
+    order:1;  /* Ylimmäksi */
+  }
+  
+  .footer-col:nth-child(2) h4{
+    display:none;  /* Piilota "Pikalinkit" otsikko */
+  }
+  
+  .footer-links{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:0.5rem 1rem;
+  }
+  
+  .footer-links li{
+    margin:0;
+  }
+  
+  .footer-links a{
+    font-size:0.85rem;
+    color:#cbd5e1;
+    padding:0.3rem 0;
+    position:relative;
+  }
+  
+  .footer-links a::after{
+    content:'';
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:0;
+    height:1px;
+    background:#38bdf8;
+    transition:width 0.3s ease;
+  }
+  
+  .footer-links a:hover{
+    color:#38bdf8;
+  }
+  
+  .footer-links a:hover::after{
+    width:100%;
+  }
+  
+  /* Yhteystiedot */
+  .footer-col:nth-child(3){
+    order:3;
+    text-align:center;
+  }
+  
+  .footer-col:nth-child(3) h4{
+    font-size:0.9rem;
+    margin-bottom:0.5rem;
+    color:#f8fafc;
+  }
+  
+  .footer-col:nth-child(3) p{
+    font-size:0.85rem;
+    color:#94a3b8;
+  }
+  
+  /* Partner-box */
+  .partner-section{
+    margin-top:0;
+    padding:1rem;
+  }
+  
+  .partner-box{
+    padding:1rem;
+  }
+  
+  .partner-box p{
+    font-size:0.85rem;
+  }
+  
+  /* Footer bottom */
+  .footer-bottom{
+    padding:1rem 0;
+    margin-top:0;
+  }
+  
+  .footer-bottom-inner{
+    flex-direction:column;
+    gap:0.5rem;
+    text-align:center;
+    font-size:0.75rem;
+  }
+}
+/* ============================================
+   FOOTER BOTTOM - Sivukartta samalle riville
+   ============================================ */
+
+@media(max-width:768px){
+  .footer-bottom-inner{
+    display:flex !important;
+    flex-direction:row !important;  /* Vaakasuora */
+    justify-content:center !important;
+    align-items:center !important;
+    gap:0.5rem !important;  /* Pieni väli tekstin ja linkin välillä */
+    flex-wrap:nowrap !important;  /* Ei rivinvaihtoa */
+  }
+  
+  .footer-bottom-inner p{
+    margin:0 !important;
+    white-space:nowrap !important;  /* Teksti yhdelle riville */
+  }
+  
+  .footer-bottom-inner a{
+    margin:0 !important;
+    white-space:nowrap !important;
+  }
 }

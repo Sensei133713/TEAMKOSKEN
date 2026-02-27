@@ -252,3 +252,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+// ============================================
+// KORJAUS: Yläpalkin "Ota yhteyttä" avaa modaalin
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // Etsi yläpalkin "Ota yhteyttä" linkki
+  const navContactLink = document.querySelector('.nav-menu a[href="#yhteys"]');
+  
+  if (navContactLink) {
+    // Poista oletusankkuri-toiminto
+    navContactLink.removeAttribute('href');
+    navContactLink.style.cursor = 'pointer';
+    
+    // Lisää click-kuuntelija modaalin avaamiseksi
+    navContactLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Avaa leadership-modal (Yhteyshenkilöt)
+      const modal = document.getElementById('leadership-modal');
+      if (modal) {
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; // Estä vieritys
+      }
+    });
+  }
+  
+});
